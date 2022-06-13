@@ -1,0 +1,9 @@
+﻿<Application x:Class="ProviderSystemManager.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ProviderSystemManager.WPF" xmlns:utils="clr-namespace:ProviderSystemManager.WPF.Utils"
+             StartupUri="Views/SignInWindow.xaml">
+    <Application.Resources>
+        <utils:ViewModelLocator x:Key="VMLocator"/>
+    </Application.Resources>
+</Application>

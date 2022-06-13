@@ -1,0 +1,38 @@
+﻿<Page x:Class="ProviderSystemManager.WPF.Views.Admin.AdminMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="AdminMainPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=AdminMainPageViewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Menu VerticalAlignment="Center"
+                  Background="Transparent">
+                <MenuItem Header="Таблицы">
+                    <MenuItem Header="Таблица1"/>
+                    <MenuItem Header="Таблица2"/>
+                    <MenuItem Header="Таблица3"/>
+                </MenuItem>
+            </Menu>
+            <Button BorderBrush="Transparent" 
+                    Background="Transparent" 
+                    Content="Операторы" 
+                    Command="{Binding OnTableSelect}"
+                    CommandParameter="User"/>
+        </StackPanel>
+
+        <Frame Grid.Row="1" 
+               Content="{Binding CurrentTablePage}" 
+               NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Page>

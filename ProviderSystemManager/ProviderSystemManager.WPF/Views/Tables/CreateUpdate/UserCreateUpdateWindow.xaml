@@ -1,0 +1,34 @@
+﻿<Window x:Class="ProviderSystemManager.WPF.Views.Tables.CreateUpdate.UserCreateUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables.CreateUpdate"
+        mc:Ignorable="d"
+        Title="Добавить пользователя" Height="400" Width="400" DataContext="{Binding Source={StaticResource VMLocator}, Path=UserCreateUpdateWindowViewModel}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox MaxHeight="30" 
+                 Text="{Binding Login}"/>
+        <TextBox Grid.Row="1"
+                 MaxHeight="30"
+                 Text="{Binding Password}"/>
+        <ComboBox Grid.Row="2"
+                  MaxHeight="30"
+                  ItemsSource="{Binding Roles}"/>
+        <Button Grid.Row="3" 
+                Content="Добавить"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                Padding="20 5"
+                Command="{Binding OnCreate}"/>
+
+    </Grid>
+</Window>
