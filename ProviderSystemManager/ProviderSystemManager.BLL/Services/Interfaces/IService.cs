@@ -12,6 +12,7 @@ public interface IService<TCreateDto, TUpdateDto, TGetDto>
     where TGetDto : IGetDto
 {
     public Task<OperationResult<IEnumerable<TGetDto>>> GetAsync();
+    public OperationResult<IEnumerable<TGetDto>> Get();
     public Task<OperationResult<TGetDto>> GetByIdAsync(int id);
     public Task<OperationResult<TGetDto>> CreateAsync(params TCreateDto[] dtos);
     public Task<OperationResult<TGetDto>> UpdateAsync(params TUpdateDto[] dtos);

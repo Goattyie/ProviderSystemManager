@@ -8,42 +8,55 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AbonentTypesPage">
 
+    <Page.Resources>
+        <ResourceDictionary Source="../../Styles.xaml"/>
+    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="413*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <DataGrid AutoGenerateColumns="False"
+        <Label VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="Bold">Виды абонентов</Label>
+
+        <DataGrid Grid.Row="1"
+                  BorderBrush="Black"
+                  BorderThickness="2"
+                  AutoGenerateColumns="False"
                   Background="Transparent"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="10*"/>
-                <DataGridTextColumn Header="Название" Width="50*"/>
+                <DataGridTextColumn Header="№" 
+                                    Width="60"
+                                    HeaderStyle="{StaticResource HorizontalCenterAlign}"/>
+                <DataGridTextColumn Header="Название" 
+                                    Width="50*"
+                                    HeaderStyle="{StaticResource HorizontalCenterAlign}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="431*"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="1"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Background="Transparent"
+                    Style="{StaticResource UsualBtnStyle}"
                     Content="Добавить"
-                    Padding="15 5"/>
+                    Command="{Binding OnCreate}"/>
 
             <Button Grid.Column="2"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Background="Transparent"
                     Content="Удалить"
-                    Padding="15 5"/>
+                    Style="{StaticResource UsualBtnStyle}"
+                    Command="{Binding OnDelete}"/>
         </Grid>
     </Grid>
 </Page>

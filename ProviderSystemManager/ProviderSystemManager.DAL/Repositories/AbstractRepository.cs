@@ -16,7 +16,9 @@ public abstract class AbstractRepository<TModel> : IRepository<TModel> where TMo
         DataSet = dbContext.Set<TModel>();
     }
 
-    public virtual async Task<IEnumerable<TModel>> Get() => await DataSet.AsNoTracking().ToListAsync();
+    public virtual async Task<IEnumerable<TModel>> GetAsync() => await DataSet.AsNoTracking().ToListAsync();
+    public virtual IEnumerable<TModel> Get() => DataSet.AsNoTracking();
+
 
     public virtual async Task<TModel> GetById(int id) => await DataSet.FindAsync(id);
 

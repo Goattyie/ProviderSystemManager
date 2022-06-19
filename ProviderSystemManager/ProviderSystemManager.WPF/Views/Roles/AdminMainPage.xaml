@@ -14,13 +14,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal"
+                    Background="LightGray">
             <Menu VerticalAlignment="Center"
                   Background="Transparent">
-                <MenuItem Header="Таблицы">
-                    <MenuItem Header="Таблица1"/>
-                    <MenuItem Header="Таблица2"/>
-                    <MenuItem Header="Таблица3"/>
+                <MenuItem Header="Справочники">
+                    <MenuItem Header="Типы абонентов"/>
+                    <MenuItem Header="Типы собственности"/>
                 </MenuItem>
             </Menu>
             <Button BorderBrush="Transparent" 

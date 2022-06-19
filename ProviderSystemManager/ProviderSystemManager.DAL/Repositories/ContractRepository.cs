@@ -11,11 +11,17 @@ public class ContractRepository : AbstractRepository<Contract>, IContractReposit
     {
     }
 
-    public override async Task<IEnumerable<Contract>> Get() =>
+    public override async Task<IEnumerable<Contract>> GetAsync() =>
         await DataSet.Include(x => x.Firm)
             .ThenInclude(f => f.OwnType)
             .Include(x => x.Abonent)
             .ThenInclude(a => a.AbonentType).AsNoTracking().ToListAsync();
+
+    public override IEnumerable<Contract> Get() =>
+        DataSet.Include(x => x.Firm)
+            .ThenInclude(f => f.OwnType)
+            .Include(x => x.Abonent)
+            .ThenInclude(a => a.AbonentType).AsNoTracking();
 
     public override async Task<Contract> GetById(int id) => await DataSet.Include(x => x.Firm)
         .ThenInclude(f => f.OwnType)

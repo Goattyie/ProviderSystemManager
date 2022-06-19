@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProviderSystemManager.WPF.Views.Admin
+namespace ProviderSystemManager.WPF.Views.Tables
 {
     /// <summary>
-    /// Логика взаимодействия для AdminMainPage.xaml
+    /// Interaction logic for ServicePage.xaml
     /// </summary>
-    public partial class AdminMainPage : Page
+    public partial class ServicePage : Page
     {
-        public AdminMainPage()
+        public ServicePage()
         {
             InitializeComponent();
         }

@@ -9,6 +9,7 @@ public class FirmRepository : AbstractRepository<Firm>, IFirmRepository
 {
     public FirmRepository(ProviderDbContext dbContext) : base(dbContext) { }
 
-    public override async Task<IEnumerable<Firm>> Get() => await DataSet.Include(x => x.OwnType).AsNoTracking().ToListAsync();
+    public override async Task<IEnumerable<Firm>> GetAsync() => await DataSet.Include(x => x.OwnType).AsNoTracking().ToListAsync();
+    public override IEnumerable<Firm> Get() => DataSet.Include(x => x.OwnType).AsNoTracking();
     public override async Task<Firm> GetById(int id) => await DataSet.Include(x => x.OwnType).FirstOrDefaultAsync(x => x.Id == id);
 }

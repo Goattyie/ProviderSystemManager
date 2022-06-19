@@ -1,17 +1,17 @@
-﻿<Page x:Class="ProviderSystemManager.WPF.Views.Tables.UsersPage"
+﻿<Page x:Class="ProviderSystemManager.WPF.Views.Tables.OwnTypePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables"
       mc:Ignorable="d" 
-      d:DesignHeight="768" d:DesignWidth="1366"
-      Title="UsersPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=UsersPageViewModel}">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OwnTypePage">
 
     <Page.Resources>
         <ResourceDictionary Source="../../Styles.xaml"/>
     </Page.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -20,27 +20,23 @@
         </Grid.RowDefinitions>
 
         <Label VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               FontSize="18"
-               FontWeight="Bold">Пользователи системы</Label>
-        
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="Bold">Типы собственности</Label>
+
         <DataGrid Grid.Row="1"
                   BorderBrush="Black"
                   BorderThickness="2"
                   AutoGenerateColumns="False"
                   Background="Transparent"
                   CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  ItemsSource="{Binding Users}"
-                  SelectedItem="{Binding SelectedUser}">
+                  CanUserDeleteRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Логин" 
-                                    Width="50*"
-                                    Binding="{Binding Login}"
+                <DataGridTextColumn Header="№" 
+                                    Width="60"
                                     HeaderStyle="{StaticResource HorizontalCenterAlign}"/>
-                <DataGridTextColumn Header="Роль" 
+                <DataGridTextColumn Header="Название" 
                                     Width="50*"
-                                    Binding="{Binding UserRole}"
                                     HeaderStyle="{StaticResource HorizontalCenterAlign}"/>
             </DataGrid.Columns>
         </DataGrid>
@@ -48,7 +44,6 @@
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="431*"/>
-                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
@@ -59,11 +54,6 @@
                     Command="{Binding OnCreate}"/>
 
             <Button Grid.Column="2"
-                    Style="{StaticResource UsualBtnStyle}"
-                    Content="Изменить"
-                    Command="{Binding OnCreate}"/>
-            
-            <Button Grid.Column="3"
                     Content="Удалить"
                     Style="{StaticResource UsualBtnStyle}"
                     Command="{Binding OnDelete}"/>

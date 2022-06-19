@@ -20,7 +20,8 @@ namespace ProviderSystemManager.WPF.ViewModels.Tables
         public UsersPageViewModel(IUserService service)
         {
             _service = service;
-            Task.Run(async () => { Users = new((await service.GetAsync()).Result); });
+            Users = new(service.Get().Result);
+            
             IoC.Resolve<UserCreateUpdateWindowViewModel>().OnUserCreate += (obj) => Users.Add(obj);
         }
 

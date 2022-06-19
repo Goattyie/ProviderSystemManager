@@ -1,9 +1,8 @@
 ﻿using ProviderSystemManager.WPF.DI;
 using ProviderSystemManager.WPF.ViewModels;
-using ProviderSystemManager.WPF.ViewModels.Admin;
+using ProviderSystemManager.WPF.ViewModels.Roles;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
-using ProviderSystemManager.WPF.Views.Admin;
 
 namespace ProviderSystemManager.WPF.Utils
 {
@@ -12,7 +11,13 @@ namespace ProviderSystemManager.WPF.Utils
         public SignInWindowViewModel SignInWindowViewModel => IoC.Resolve<SignInWindowViewModel>();
         public MainWindowViewModel MainWindowViewModel => IoC.Resolve<MainWindowViewModel>();
         public AdminMainPageViewModel AdminMainPageViewModel => IoC.Resolve<AdminMainPageViewModel>();
+        public OperatorMainPageViewModel OperatorMainPageViewModel => IoC.Resolve<OperatorMainPageViewModel>();
+        public UserMainPageViewModel UserMainPageViewModel => IoC.Resolve<UserMainPageViewModel>();
         public UsersPageViewModel UsersPageViewModel => IoC.Resolve<UsersPageViewModel>();
         public UserCreateUpdateWindowViewModel UserCreateUpdateWindowViewModel => IoC.Resolve<UserCreateUpdateWindowViewModel>();
+        public FirmPageViewModel FirmPageViewModel => IoC.Resolve<FirmPageViewModel>();
+        public AbonentPageViewModel AbonentPageViewModel => IoC.Resolve<AbonentPageViewModel>();
+        public ContractPageViewModel ContractPageViewModel => IoC.Resolve<ContractPageViewModel>();
+        public ServicePageViewModel ServicePageViewModel => IoC.Resolve<ServicePageViewModel>();
     }
 }

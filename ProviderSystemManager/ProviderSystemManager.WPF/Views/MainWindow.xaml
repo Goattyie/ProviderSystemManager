@@ -6,19 +6,23 @@
         xmlns:local="clr-namespace:ProviderSystemManager.WPF"
         mc:Ignorable="d"
         Title="Система управления провайдерами" Height="768" Width="1366" DataContext="{Binding Source={StaticResource VMLocator}, Path=MainWindowViewModel}">
-    <Grid Margin="10">
+    <Window.Resources>
+        <ResourceDictionary Source="../Styles.xaml"/>
+    </Window.Resources>
+    
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Button HorizontalAlignment="Right"
+                Margin="0 0 10 0"
                 Content="Выйти"
-                Width="100"
-                Background="Transparent"
-                BorderBrush="Transparent"
+                Style="{StaticResource UsualBtnStyle}"
                 Command="{Binding OnExit}"/>
-        <Frame Grid.Row="1" 
+        <Frame  Margin="10 0 10 10"
+                Grid.Row="1" 
                Content="{Binding CurrentPage}" 
                NavigationUIVisibility="Hidden"/>
     </Grid>

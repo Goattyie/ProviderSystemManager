@@ -26,9 +26,17 @@ public abstract class AbstractService<TCreateDto, TUpdateDto, TGetDto, TModel> :
     protected IMapper Mapper { get; }
     public virtual async Task<OperationResult<IEnumerable<TGetDto>>> GetAsync()
     {
-        var models = await Repository.Get();
+        var models = await Repository.GetAsync();
         var dtos = Mapper.Map<IEnumerable<TGetDto>>(models);
         
+        return OperationResponse.Ok(dtos);
+    }
+
+    public virtual OperationResult<IEnumerable<TGetDto>> Get()
+    {
+        var models = Repository.Get();
+        var dtos = Mapper.Map<IEnumerable<TGetDto>>(models);
+
         return OperationResponse.Ok(dtos);
     }
 

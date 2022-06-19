@@ -1,0 +1,35 @@
+﻿<Page x:Class="ProviderSystemManager.WPF.Views.Roles.OperatorMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Roles"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OperatorMainPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=OperatorMainPageViewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button BorderBrush="Transparent" 
+                    Background="Transparent" 
+                    Content="Провайдеры" 
+                    Command="{Binding OnTableSelect}"
+                    CommandParameter="contract"/>
+            <Button BorderBrush="Transparent" 
+                    Margin="10 0 0 0"
+                    Background="Transparent" 
+                    Content="Услуги" 
+                    Command="{Binding OnTableSelect}"
+                    CommandParameter="abonent"/>
+        </StackPanel>
+
+        <Frame Grid.Row="1" 
+               Content="{Binding CurrentTablePage}" 
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

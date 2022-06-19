@@ -6,4 +6,5 @@ public class ServiceGetDto : IGetDto
     public AbonentGetDto Abonent { get; set; }
     public double Size { get; set; }
     public string RecievingDate { get; set; }
+    public FirmGetDto Firm { get; set; }
 }

@@ -7,7 +7,6 @@ using ProviderSystemManager.WPF.Utils;
 using System;
 using System.Configuration;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace ProviderSystemManager.WPF.ViewModels

@@ -10,15 +10,13 @@ public class UserCreator
 {
     public static void Init(ProviderDbContext context)
     {
-        var user1 = new User() { Login = "admin1", Password = HashPassword("1234"), Role = UserRole.Admin};
-        var user2 = new User() { Login = "operator1", Password = HashPassword("1233"), Role = UserRole.Operator };
-        var user3 = new User() { Login = "user", Password = HashPassword("1955"), Role = UserRole.User };
-        var user4 = new User() { Login = "employee_1", Password = HashPassword("1956"), Role = UserRole.Admin };
+        var user1 = new User() { Login = "operator1", Password = HashPassword("1233"), Role = UserRole.Operator };
+        var user2 = new User() { Login = "user", Password = HashPassword("1955"), Role = UserRole.User };
+        var user3 = new User() { Login = "employee_1", Password = HashPassword("1956"), Role = UserRole.Admin };
 
         context.Users?.Add(user1);
         context.Users?.Add(user2);
         context.Users?.Add(user3);
-        context.Users?.Add(user4);
 
         context.SaveChanges();
     }
