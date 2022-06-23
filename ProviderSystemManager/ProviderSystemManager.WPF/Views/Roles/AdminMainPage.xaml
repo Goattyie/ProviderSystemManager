@@ -28,6 +28,11 @@
                     Content="Операторы" 
                     Command="{Binding OnTableSelect}"
                     CommandParameter="User"/>
+            <Button BorderBrush="Transparent" 
+                    Background="Transparent" 
+                    Content="Запросы" 
+                    Command="{Binding OnTableSelect}"
+                    CommandParameter="queries"/>
         </StackPanel>
 
         <Frame Grid.Row="1" 

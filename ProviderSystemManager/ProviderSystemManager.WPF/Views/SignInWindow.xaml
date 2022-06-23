@@ -36,6 +36,8 @@
         <Button Grid.Row="3" 
                 Style="{StaticResource UsualBtnStyle}"
                 Content="Войти" 
+                Height="30"
+                Width="100"
                 Command="{Binding SignInCommand}"/>
     
     </Grid>

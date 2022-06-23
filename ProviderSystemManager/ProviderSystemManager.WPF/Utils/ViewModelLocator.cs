@@ -1,5 +1,6 @@
 ﻿using ProviderSystemManager.WPF.DI;
 using ProviderSystemManager.WPF.ViewModels;
+using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.WPF.ViewModels.Roles;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
@@ -19,5 +20,7 @@ namespace ProviderSystemManager.WPF.Utils
         public AbonentPageViewModel AbonentPageViewModel => IoC.Resolve<AbonentPageViewModel>();
         public ContractPageViewModel ContractPageViewModel => IoC.Resolve<ContractPageViewModel>();
         public ServicePageViewModel ServicePageViewModel => IoC.Resolve<ServicePageViewModel>();
+        public CommonQueryPageViewModel CommonQueryPageViewModel => IoC.Resolve<CommonQueryPageViewModel>();
+        public GetAbonentsByTypeQueryPageViewModel GetAbonentsByTypeQueryPageViewModel => IoC.Resolve<GetAbonentsByTypeQueryPageViewModel>();
     }
 }

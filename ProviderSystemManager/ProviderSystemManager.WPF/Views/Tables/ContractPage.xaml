@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="ContractPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=ContractPageViewModel}">
 
     <Page.Resources>
@@ -30,12 +30,7 @@
                    FontWeight="Bold">Абоненты</Label>
 
             <DataGrid Grid.Row="1"
-                      BorderThickness="2"
-                      BorderBrush="Black"
-                      AutoGenerateColumns="False"
-                      Background="Transparent"
-                      CanUserAddRows="False"
-                      CanUserDeleteRows="False"
+                      Style="{StaticResource UsualDataGrid}"
                       ItemsSource="{Binding Abonents}">
                 <DataGrid.Columns>
                     <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="№" Width="15*" Binding="{Binding Id}"/>
@@ -64,9 +59,8 @@
                    FontWeight="Bold">Детальная информация</Label>
                
                 <Border Grid.Row="1"
-                        BorderBrush="Black"
-                        Margin="0 0 0 30"
-                        BorderThickness="2">
+                        Style="{StaticResource InfoBorder}"
+                        Margin="0 0 0 30">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -134,7 +128,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="187*"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <Label VerticalAlignment="Center"
@@ -143,12 +137,7 @@
                    FontWeight="Bold">Заключенные контракты</Label>
 
                 <DataGrid Grid.Row="1"
-                          BorderThickness="2"
-                          BorderBrush="Black"
-                          AutoGenerateColumns="False"
-                          Background="Transparent"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
+                          Style="{StaticResource UsualDataGrid}"
                           ItemsSource="{Binding Contracts}"
                           SelectedItem="{Binding SelectedContract}">
                     <DataGrid.Columns>
@@ -160,20 +149,21 @@
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Row="2" 
-                            Grid.Column="1"
+                            Grid.Column="0"
                             Style="{StaticResource UsualBtnStyle}"
-                            Content="Добавить"/>
+                            Content="Добавить"
+                            Margin="10"/>
 
                     <Button Grid.Row="2"
-                            Grid.Column="2"
+                            Grid.Column="1"
                             Style="{StaticResource UsualBtnStyle}"
-                            Content="Удалить"/>
+                            Content="Удалить"
+                            Margin="10"/>
                 </Grid>
             </Grid>
         </Grid>

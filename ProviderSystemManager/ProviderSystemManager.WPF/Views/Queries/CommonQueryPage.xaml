@@ -1,0 +1,28 @@
+﻿<Page x:Class="ProviderSystemManager.WPF.Views.Queries.CommonQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Queries"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="CommonQueryPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=CommonQueryPageViewModel}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="../../Styles.xaml"/>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ComboBox Style="{StaticResource UsualComboBox}"
+                  ItemsSource="{Binding QueryTitles}"
+                  SelectedItem="{Binding SelectedTitle}"/>
+        <Frame Grid.Row="1" 
+               Content="{Binding CurrentPage}" 
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

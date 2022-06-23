@@ -1,0 +1,55 @@
+﻿<Page x:Class="ProviderSystemManager.WPF.Views.Queries.GetAbonentsByTypeQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Queries"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="GetAbonentsByTypeQueryPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=GetAbonentsByTypeQueryPageViewModel}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="../../Styles.xaml"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="15"
+                   FontWeight="Bold">Виды абонентов</Label>
+            
+            <ComboBox Grid.Column="1" 
+                      Style="{StaticResource UsualComboBox}"
+                      Margin="0 0 20 0"
+                      ItemsSource="{Binding AbonentTypes}"
+                      SelectedItem="{Binding SelectedAbonentType}"
+                      DisplayMemberPath="Name"/>
+            <Button Grid.Column="2"
+                Style="{StaticResource UsualBtnStyle}"
+                FontSize="16"
+                Content="Выполнить"
+                Command="{Binding Execute}"/>
+        </Grid>
+
+        <DataGrid Grid.Row="1"
+                  Style="{StaticResource UsualDataGrid}"
+                  ItemsSource="{Binding Data}">
+            <DataGrid.Columns>
+                <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Имя" Width="1*" Binding="{Binding Name}"/>
+                <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Email" Width="1*" Binding="{Binding Email}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

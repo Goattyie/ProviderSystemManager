@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProviderSystemManager.DAL.Database;
+using ProviderSystemManager.DAL.QueryCreators;
 using ProviderSystemManager.DAL.TableCreators;
 
 namespace ProviderSystemManager.DAL;
@@ -18,5 +19,6 @@ public class DbInitializer
         FirmCreator.Init(dbContext);
         ContractCreator.Init(dbContext);
         ServiceCreator.Init(dbContext);
+        QueryCreator.Init(dbContext);
     }
 }

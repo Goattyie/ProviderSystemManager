@@ -8,8 +8,12 @@ public class OwnTypeConfiguration : IEntityTypeConfiguration<OwnType>
 {
     public void Configure(EntityTypeBuilder<OwnType> builder)
     {
+        builder.ToTable("own_types");
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Name).HasMaxLength(20);
+        builder.Property(x => x.Id).HasColumnName("id");
+        builder.Property(x => x.Name)
+            .HasColumnName("name")
+            .HasMaxLength(20);
         builder.HasMany(x => x.Firms)
             .WithOne(m => m.OwnType)
             .HasForeignKey(k => k.OwnTypeId);

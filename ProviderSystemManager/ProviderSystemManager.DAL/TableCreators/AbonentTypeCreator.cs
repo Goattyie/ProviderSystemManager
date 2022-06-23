@@ -7,8 +7,8 @@ public class AbonentTypeCreator
 {
     public static void Init(ProviderDbContext context)
     {
-        var abonentType1 = new AbonentType() {Name = "Частная"};
-        var abonentType2 = new AbonentType() {Name = "Собственная"};
+        var abonentType1 = new AbonentType() {Name = "Частное лицо"};
+        var abonentType2 = new AbonentType() {Name = "ВУЗ"};
 
         context.AbonentTypes?.Add(abonentType1);
         context.AbonentTypes?.Add(abonentType2);

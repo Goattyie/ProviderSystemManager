@@ -15,6 +15,11 @@ using ProviderSystemManager.WPF.Views.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
 using ProviderSystemManager.WPF.Views.Roles;
+using ProviderSystemManager.WPF.Views.Queries;
+using ProviderSystemManager.WPF.ViewModels.Queries;
+using ProviderSystemManager.DAL.Models.Queries;
+using ProviderSystemManager.DAL.Queries.Interfaces;
+using ProviderSystemManager.DAL.Queries;
 
 namespace ProviderSystemManager.WPF.DI
 {
@@ -36,6 +41,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<AbonentPage>();
             services.AddTransient<ContractPage>();
             services.AddTransient<ServicePage>();
+            services.AddTransient<CommonQueryPage>();
+            services.AddTransient<GetAbonentsByTypeQueryPage>();
 
             #endregion
 
@@ -52,6 +59,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<AbonentPageViewModel>();
             services.AddTransient<ServicePageViewModel>();
             services.AddSingleton<UserCreateUpdateWindowViewModel>();
+            services.AddTransient<CommonQueryPageViewModel>();
+            services.AddTransient<GetAbonentsByTypeQueryPageViewModel>();
 
             #endregion
 
@@ -73,6 +82,12 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<IAbonentRepository, AbonentRepository>();
             services.AddTransient<IServiceRepository, ServiceRepository>();
             services.AddTransient<IAbonentTypeRepository, AbonentTypeRepository>();
+
+            #endregion
+
+            #region Queries
+
+            services.AddTransient<IGetEmailsByAbonentTypeQuery, GetEmailsByAbonentTypeQuery>();
 
             #endregion
 

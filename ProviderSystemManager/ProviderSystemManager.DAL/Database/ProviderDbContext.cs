@@ -29,8 +29,8 @@ public class ProviderDbContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder builder)
-    //{
-    //    builder.UseNpgsql("User ID=postgres;Password=1956;Host=localhost;Port=5432;Database=ProviderSM;Pooling=true;");
-    //}
+    protected override void OnConfiguring(DbContextOptionsBuilder builder)
+    {
+        builder.UseNpgsql("User ID=postgres;Password=1956;Host=localhost;Port=5432;Database=ProviderSM;Pooling=true;");
+    }
 }
