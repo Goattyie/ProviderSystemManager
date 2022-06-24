@@ -21,7 +21,7 @@
         <ComboBox Style="{StaticResource UsualComboBox}"
                   ItemsSource="{Binding QueryTitles}"
                   SelectedItem="{Binding SelectedTitle}"/>
-        <Frame Grid.Row="1" 
+        <Frame Margin="0 10 0 0" Grid.Row="1" 
                Content="{Binding CurrentPage}" 
                NavigationUIVisibility="Hidden"/>
     </Grid>

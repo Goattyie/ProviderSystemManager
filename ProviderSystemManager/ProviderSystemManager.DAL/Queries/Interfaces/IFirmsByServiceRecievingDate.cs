@@ -2,7 +2,7 @@
 
 namespace ProviderSystemManager.DAL.Queries.Interfaces
 {
-    public interface IGetEmailsByAbonentTypeQuery : IQuery<IEnumerable<EmailsByAbonentTypeModel>>
+    public interface IFirmsByServiceRecievingDate : IQuery<IEnumerable<FirmService>>
     {
     }
 }

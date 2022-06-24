@@ -21,6 +21,13 @@ namespace ProviderSystemManager.WPF.Utils
         public ContractPageViewModel ContractPageViewModel => IoC.Resolve<ContractPageViewModel>();
         public ServicePageViewModel ServicePageViewModel => IoC.Resolve<ServicePageViewModel>();
         public CommonQueryPageViewModel CommonQueryPageViewModel => IoC.Resolve<CommonQueryPageViewModel>();
-        public GetAbonentsByTypeQueryPageViewModel GetAbonentsByTypeQueryPageViewModel => IoC.Resolve<GetAbonentsByTypeQueryPageViewModel>();
+        public AbonentsByAbonentTypeQueryPageViewModel GetAbonentsByTypeQueryPageViewModel => IoC.Resolve<AbonentsByAbonentTypeQueryPageViewModel>();
+        public FirmsByOwnTypeQueryPageViewModel FirmNamesByOwnTypeQueryPageViewModel => IoC.Resolve<FirmsByOwnTypeQueryPageViewModel>();
+        public FirmsByServiceRecievingDateQueryPageViewModel FirmServiceSizeByDateQueryPageViewModel => IoC.Resolve<FirmsByServiceRecievingDateQueryPageViewModel>();
+        public ContractsInfoQueryPageViewModel ContractsInfoQueryPageViewModel => IoC.Resolve<ContractsInfoQueryPageViewModel>();
+        public ServiceInfoQueryPageViewModel ServiceInfoQueryPageViewModel => IoC.Resolve<ServiceInfoQueryPageViewModel>();
+        public ContractAbonentsEmailNotNullQueryPageViewModel ContractAbonentsEmailNotNullQueryPageViewModel => IoC.Resolve<ContractAbonentsEmailNotNullQueryPageViewModel>();
+        public FirmHaveServicesQueryPageViewModel FirmHaveServicesQueryPageViewModel => IoC.Resolve<FirmHaveServicesQueryPageViewModel>();
+        public FirmsByStartDateWithServicesQueryPageViewModel FirmsByStartDateWithServicesQueryPageViewModel => IoC.Resolve<FirmsByStartDateWithServicesQueryPageViewModel>();
     }
 }

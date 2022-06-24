@@ -9,16 +9,14 @@ using System.Linq;
 
 namespace ProviderSystemManager.WPF.ViewModels.Queries
 {
-    internal class GetAbonentsByTypeQueryPageViewModel : BindableBase
+    internal class AbonentsByAbonentTypeQueryPageViewModel : BindableBase
     {
-        private readonly IGetEmailsByAbonentTypeQuery _query;
-        private readonly IAbonentTypeService _abonentTypeService;
+        private readonly IAbonentsByAbonentTypeQuery _query;
 
-        public GetAbonentsByTypeQueryPageViewModel(IAbonentTypeService abonentTypeService, IGetEmailsByAbonentTypeQuery query)
+        public AbonentsByAbonentTypeQueryPageViewModel(IAbonentTypeService abonentTypeService, IAbonentsByAbonentTypeQuery query)
         {
             _query = query;
-            _abonentTypeService = abonentTypeService;
-            AbonentTypes = new(_abonentTypeService.Get().Result);
+            AbonentTypes = new(abonentTypeService.Get().Result);
             SelectedAbonentType = AbonentTypes.FirstOrDefault();
             Data = new ObservableCollection<EmailsByAbonentTypeModel>();
         }

@@ -43,6 +43,13 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<ServicePage>();
             services.AddTransient<CommonQueryPage>();
             services.AddTransient<GetAbonentsByTypeQueryPage>();
+            services.AddTransient<FirmNamesByOwnTypeQueryPage>();
+            services.AddTransient<FirmServiceSizeByDateQueryPage>();
+            services.AddTransient<ContractsInfoQueryPage>();
+            services.AddTransient<ServiceInfoQueryPage>();
+            services.AddTransient<ContractAbonentsEmailNotNullQueryPage>();
+            services.AddTransient<FirmHaveServicesQueryPage>();
+            services.AddTransient<FirmsByStartDateWithServicesQueryPage>();
 
             #endregion
 
@@ -60,7 +67,14 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<ServicePageViewModel>();
             services.AddSingleton<UserCreateUpdateWindowViewModel>();
             services.AddTransient<CommonQueryPageViewModel>();
-            services.AddTransient<GetAbonentsByTypeQueryPageViewModel>();
+            services.AddTransient<AbonentsByAbonentTypeQueryPageViewModel>();
+            services.AddTransient<FirmsByOwnTypeQueryPageViewModel>();
+            services.AddTransient<FirmsByServiceRecievingDateQueryPageViewModel>();
+            services.AddTransient<ContractsInfoQueryPageViewModel>();
+            services.AddTransient<ServiceInfoQueryPageViewModel>();
+            services.AddTransient<ContractAbonentsEmailNotNullQueryPageViewModel>();
+            services.AddTransient<FirmHaveServicesQueryPageViewModel>();
+            services.AddTransient<FirmsByStartDateWithServicesQueryPageViewModel>();
 
             #endregion
 
@@ -87,16 +101,23 @@ namespace ProviderSystemManager.WPF.DI
 
             #region Queries
 
-            services.AddTransient<IGetEmailsByAbonentTypeQuery, GetEmailsByAbonentTypeQuery>();
+            services.AddTransient<IAbonentsByAbonentTypeQuery, AbonentsByAbonentTypeQuery>();
+            services.AddTransient<IFirmsByOwnType, FirmsByOwnType>();
+            services.AddTransient<IFirmsByServiceRecievingDate, FirmsByServiceRecievingDate>();
+            services.AddTransient<IContractsInfoQuery, ContractsInfoQuery>();
+            services.AddTransient<IServiceInfoQuery, ServiceInfoQuery>();
+            services.AddTransient<IContractAbonentsEmailNotNullQuery, ContractAbonentsEmailNotNullQuery>();
+            services.AddTransient<IFirmHaveServicesQuery, FirmHaveServicesQuery>();
+            services.AddTransient<IFirmsByStartDateWithServicesQuery, FirmsByStartDateWithServicesQuery>();
 
             #endregion
 
             #region Services
 
             services.AddTransient<IContractService, ContractService>();
-            services.AddTransient<IFirmService, FirmService>();
+            services.AddTransient<IFirmService, BLL.Services.FirmService>();
             services.AddTransient<IDbContextService, DbContextService>();
-            services.AddTransient<IFirmService, FirmService>();
+            services.AddTransient<IFirmService, BLL.Services.FirmService>();
             services.AddTransient<IOwnTypeService, OwnTypeService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IAbonentService, AbonentService>();

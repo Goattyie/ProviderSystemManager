@@ -6,9 +6,9 @@ using System.Data.Common;
 
 namespace ProviderSystemManager.DAL.Queries
 {
-    public class GetEmailsByAbonentTypeQuery : AbstractQuery<IEnumerable<EmailsByAbonentTypeModel>>, IGetEmailsByAbonentTypeQuery
+    public class AbonentsByAbonentTypeQuery : AbstractQuery<IEnumerable<EmailsByAbonentTypeModel>>, IAbonentsByAbonentTypeQuery
     {
-        public GetEmailsByAbonentTypeQuery(ProviderDbContext dbContext) : base(dbContext)
+        public AbonentsByAbonentTypeQuery(ProviderDbContext dbContext) : base(dbContext)
         {
         }
 
