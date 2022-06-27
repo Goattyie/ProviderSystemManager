@@ -52,6 +52,12 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<FirmsByStartDateWithServicesQueryPage>();
             services.AddTransient<AbonentsByServiceRecievingDateQueryPage>();
             services.AddTransient<AbonentInfoQueryPage>();
+            services.AddTransient<SumSizeFirmsQueryPage>();
+            services.AddTransient<FirmsCountByOwnTypeQueryPage>();
+            services.AddTransient<AbonentsByContractsSumQueryPage>();
+            services.AddTransient<AbonentsByContractsSumAndDateQueryPage>();
+            services.AddTransient<FirmsSumConnectionCostInflationQueryPage>();
+            services.AddTransient<FirmsSumConnectionCostMoreAvgQueryPage>();
 
             #endregion
 
@@ -79,6 +85,12 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<FirmsByStartDateWithServicesQueryPageViewModel>();
             services.AddTransient<AbonentsByServiceRecievingDateQueryPageViewModel>();
             services.AddTransient<AbonentInfoQueryPageViewModel>();
+            services.AddTransient<SumSizeFirmsQueryPageViewModel>();
+            services.AddTransient<FirmsCountByOwnTypeQueryPageViewModel>();
+            services.AddTransient<AbonentsByContractsSumQueryPageViewModel>();
+            services.AddTransient<AbonentsByContractsSumAndDateQueryPageViewModel>();
+            services.AddTransient<FirmsSumConnectionCostInflationQueryPageViewModel>();
+            services.AddTransient<FirmsSumConnectionCostMoreAvgQueryPageViewModel>();
 
             #endregion
 
@@ -115,6 +127,12 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<IFirmsByStartDateWithServicesQuery, FirmsByStartDateWithServicesQuery>();
             services.AddTransient<IAbonentsByServiceRecievingDateQuery, AbonentsByServiceRecievingDateQuery>();
             services.AddTransient<IAbonentInfoQuery, AbonentInfoQuery>();
+            services.AddTransient<ISumSizeFirmsQuery, SumSizeFirmsQuery>();
+            services.AddTransient<IFirmsCountByOwnTypeQuery, FirmsCountByOwnTypeQuery>();
+            services.AddTransient<IAbonentsByContractsSumQuery, AbonentsByContractsSumQuery>();
+            services.AddTransient<IAbonentsByContractsSumAndDateQuery, AbonentsByContractsSumAndDateQuery>();
+            services.AddTransient<IFirmsSumConnectionCostInflationQuery, FirmsSumConnectionCostInflationQuery>();
+            services.AddTransient<IFirmsSumConnectionCostMoreAvgQuery, FirmsSumConnectionCostMoreAvgQuery>();
 
             #endregion
 

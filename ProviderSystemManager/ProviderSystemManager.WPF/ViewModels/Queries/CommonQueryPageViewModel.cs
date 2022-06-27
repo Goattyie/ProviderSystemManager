@@ -19,7 +19,13 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
             FirmHaveServicesQueryPage firmHaveServicesQueryPage,
             FirmsByStartDateWithServicesQueryPage firmsByServiceRecievingDateQueryPage,
             AbonentsByServiceRecievingDateQueryPage abonentsByServiceRecievingDateQueryPage,
-            AbonentInfoQueryPage abonentInfoQueryPage)
+            AbonentInfoQueryPage abonentInfoQueryPage,
+            SumSizeFirmsQueryPage sumSizeFirmsQueryPage,
+            FirmsCountByOwnTypeQueryPage firmsCountByOwnTypeQueryPage,
+            AbonentsByContractsSumQueryPage abonentsByContractsSumQueryPage,
+            AbonentsByContractsSumAndDateQueryPage abonentsByContractsSumAndDateQueryPage,
+            FirmsSumConnectionCostInflationQueryPage firmsSumConnectionCostInflationQueryPage,
+            FirmsSumConnectionCostMoreAvgQueryPage firmsSumConnectionCostMoreAvgQueryPage)
         {
             _queryPages = new()
             {
@@ -32,7 +38,13 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
                 firmHaveServicesQueryPage,
                 firmsByServiceRecievingDateQueryPage,
                 abonentsByServiceRecievingDateQueryPage,
-                abonentInfoQueryPage
+                abonentInfoQueryPage,
+                sumSizeFirmsQueryPage,
+                firmsCountByOwnTypeQueryPage,
+                abonentsByContractsSumQueryPage,
+                abonentsByContractsSumAndDateQueryPage,
+                firmsSumConnectionCostInflationQueryPage,
+                firmsSumConnectionCostMoreAvgQueryPage
             };
             CurrentPage = _queryPages.FirstOrDefault();
             QueryTitles = new()
@@ -46,7 +58,13 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
                 "Вывести все фирмы, которые хоть раз отказывали услуги",
                 "Вывести все фирмы, которые хоть раз отказывали услуги и были открыты в указанный период",
                 "Вывести всех абонентов и объем сообщения услуг, предоставленных в указанную дату",
-                "Вывести имена абонентов и их тип"
+                "Вывести имена абонентов и их тип",
+                "Вывести фирмы и их общее число предоставленных МБ",
+                "Вывести количество фирм с указанным типом собственности",
+                "Вывести абонентов, которые составили контрактов на подключение в сумме на цену более указанного числа",
+                "Вывести абонентов, которые составили контрактов на подключение в сумме на цену более указанного числа и которые начинаются в указанную дату",
+                "Вывести фирмы и их общую прибыль за подключение до и после инфляции (уменьшение на 30%), в период за между двумя датами",
+                "Вывести фирмы и их общую прибыль за подключения, сумма которой больше средней прибыли за подключения"
             };
             SelectedTitle = QueryTitles.FirstOrDefault();
         }

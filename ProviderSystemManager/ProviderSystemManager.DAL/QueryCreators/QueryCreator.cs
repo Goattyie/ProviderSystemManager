@@ -18,6 +18,12 @@ namespace ProviderSystemManager.DAL.QueryCreators
             var query8 = new FirmsByStartDateWithServicesQuery(dbContext);
             var query9 = new AbonentsByServiceRecievingDateQuery(dbContext);
             var query10 = new AbonentInfoQuery(dbContext);
+            var query11 = new SumSizeFirmsQuery(dbContext);
+            var query12 = new FirmsCountByOwnTypeQuery(dbContext);
+            var query13 = new AbonentsByContractsSumQuery(dbContext);
+            var query14 = new AbonentsByContractsSumAndDateQuery(dbContext);
+            var query15 = new FirmsSumConnectionCostInflationQuery(dbContext);
+            var query16 = new FirmsSumConnectionCostMoreAvgQuery(dbContext);
 
             dbContext.Database.ExecuteSqlRaw(query.CreateQuery);
             dbContext.Database.ExecuteSqlRaw(query2.CreateQuery);
@@ -29,6 +35,12 @@ namespace ProviderSystemManager.DAL.QueryCreators
             dbContext.Database.ExecuteSqlRaw(query8.CreateQuery);
             dbContext.Database.ExecuteSqlRaw(query9.CreateQuery);
             dbContext.Database.ExecuteSqlRaw(query10.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query11.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query12.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query13.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query14.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query15.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query16.CreateQuery);
         }
     }
 }
