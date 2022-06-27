@@ -17,7 +17,9 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
             ServiceInfoQueryPage serviceInfoQueryPage,
             ContractAbonentsEmailNotNullQueryPage contractAbonentsEmailNotNullQueryPage,
             FirmHaveServicesQueryPage firmHaveServicesQueryPage,
-            FirmsByStartDateWithServicesQueryPage firmsByServiceRecievingDateQueryPage)
+            FirmsByStartDateWithServicesQueryPage firmsByServiceRecievingDateQueryPage,
+            AbonentsByServiceRecievingDateQueryPage abonentsByServiceRecievingDateQueryPage,
+            AbonentInfoQueryPage abonentInfoQueryPage)
         {
             _queryPages = new()
             {
@@ -28,7 +30,9 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
                 serviceInfoQueryPage,
                 contractAbonentsEmailNotNullQueryPage,
                 firmHaveServicesQueryPage,
-                firmsByServiceRecievingDateQueryPage
+                firmsByServiceRecievingDateQueryPage,
+                abonentsByServiceRecievingDateQueryPage,
+                abonentInfoQueryPage
             };
             CurrentPage = _queryPages.FirstOrDefault();
             QueryTitles = new()
@@ -40,7 +44,9 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
                 "Вывести абонентов и объем сообщения их услуг",
                 "Вывести все контракты абонентов, у которых указана почта",
                 "Вывести все фирмы, которые хоть раз отказывали услуги",
-                "Вывести все фирмы, которые хоть раз отказывали услуги и были открыты в указанный перидо"
+                "Вывести все фирмы, которые хоть раз отказывали услуги и были открыты в указанный период",
+                "Вывести всех абонентов и объем сообщения услуг, предоставленных в указанную дату",
+                "Вывести имена абонентов и их тип"
             };
             SelectedTitle = QueryTitles.FirstOrDefault();
         }

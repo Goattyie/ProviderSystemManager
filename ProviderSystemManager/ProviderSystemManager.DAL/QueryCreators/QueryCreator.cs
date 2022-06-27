@@ -16,6 +16,8 @@ namespace ProviderSystemManager.DAL.QueryCreators
             var query6 = new ContractAbonentsEmailNotNullQuery(dbContext);
             var query7 = new FirmHaveServicesQuery(dbContext);
             var query8 = new FirmsByStartDateWithServicesQuery(dbContext);
+            var query9 = new AbonentsByServiceRecievingDateQuery(dbContext);
+            var query10 = new AbonentInfoQuery(dbContext);
 
             dbContext.Database.ExecuteSqlRaw(query.CreateQuery);
             dbContext.Database.ExecuteSqlRaw(query2.CreateQuery);
@@ -25,6 +27,8 @@ namespace ProviderSystemManager.DAL.QueryCreators
             dbContext.Database.ExecuteSqlRaw(query6.CreateQuery);
             dbContext.Database.ExecuteSqlRaw(query7.CreateQuery);
             dbContext.Database.ExecuteSqlRaw(query8.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query9.CreateQuery);
+            dbContext.Database.ExecuteSqlRaw(query10.CreateQuery);
         }
     }
 }

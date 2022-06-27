@@ -50,6 +50,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<ContractAbonentsEmailNotNullQueryPage>();
             services.AddTransient<FirmHaveServicesQueryPage>();
             services.AddTransient<FirmsByStartDateWithServicesQueryPage>();
+            services.AddTransient<AbonentsByServiceRecievingDateQueryPage>();
+            services.AddTransient<AbonentInfoQueryPage>();
 
             #endregion
 
@@ -75,6 +77,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<ContractAbonentsEmailNotNullQueryPageViewModel>();
             services.AddTransient<FirmHaveServicesQueryPageViewModel>();
             services.AddTransient<FirmsByStartDateWithServicesQueryPageViewModel>();
+            services.AddTransient<AbonentsByServiceRecievingDateQueryPageViewModel>();
+            services.AddTransient<AbonentInfoQueryPageViewModel>();
 
             #endregion
 
@@ -109,6 +113,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<IContractAbonentsEmailNotNullQuery, ContractAbonentsEmailNotNullQuery>();
             services.AddTransient<IFirmHaveServicesQuery, FirmHaveServicesQuery>();
             services.AddTransient<IFirmsByStartDateWithServicesQuery, FirmsByStartDateWithServicesQuery>();
+            services.AddTransient<IAbonentsByServiceRecievingDateQuery, AbonentsByServiceRecievingDateQuery>();
+            services.AddTransient<IAbonentInfoQuery, AbonentInfoQuery>();
 
             #endregion
 

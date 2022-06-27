@@ -29,5 +29,7 @@ namespace ProviderSystemManager.WPF.Utils
         public ContractAbonentsEmailNotNullQueryPageViewModel ContractAbonentsEmailNotNullQueryPageViewModel => IoC.Resolve<ContractAbonentsEmailNotNullQueryPageViewModel>();
         public FirmHaveServicesQueryPageViewModel FirmHaveServicesQueryPageViewModel => IoC.Resolve<FirmHaveServicesQueryPageViewModel>();
         public FirmsByStartDateWithServicesQueryPageViewModel FirmsByStartDateWithServicesQueryPageViewModel => IoC.Resolve<FirmsByStartDateWithServicesQueryPageViewModel>();
+        public AbonentsByServiceRecievingDateQueryPageViewModel AbonentsByServiceRecievingDateQueryViewModel => IoC.Resolve<AbonentsByServiceRecievingDateQueryPageViewModel>();
+        public AbonentInfoQueryPageViewModel AbonentInfoQueryPageViewModel => IoC.Resolve<AbonentInfoQueryPageViewModel>();
     }
 }
