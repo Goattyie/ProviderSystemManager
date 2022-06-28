@@ -11,9 +11,9 @@ namespace ProviderSystemManager.BLL.Exporters
 {
     public class BaseExporter
     {
-        public async Task<Stream> ExportTable(DataTable table, ChartOptions chartOptions = null)
+        public Task<Stream> ExportTable(DataTable table, ChartOptions chartOptions = null)
         {
-            var stream = new FileStream($"{DateTime.Now.Millisecond}.xlsx", FileMode.Create, FileAccess.Write);
+            var stream = new MemoryStream();
             var workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet();
             var headerRow = sheet.CreateRow(0);
@@ -46,11 +46,11 @@ namespace ProviderSystemManager.BLL.Exporters
             if (chartOptions is not null)
                 GenerageBarChart(sheet, chartOptions);
 
-            workbook.Write(stream);
+            workbook.Write(stream, true);
+            
             stream.Position = 0;
-            stream.Close();
 
-            return null;
+            return Task.FromResult((Stream)stream);
         }
 
         private void GenerageBarChart(ISheet sheet, ChartOptions options)

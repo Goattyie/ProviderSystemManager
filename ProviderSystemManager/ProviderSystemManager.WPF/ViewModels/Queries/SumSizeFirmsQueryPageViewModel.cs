@@ -39,10 +39,10 @@ namespace ProviderSystemManager.WPF.ViewModels.Queries
             var result = await _query.Execute();
 
             var stream = await _exporter.Export(result);
-
-            //using var filestream = new FileStream($"{DateTime.Now.Millisecond}.xlsx", FileMode.Create, System.IO.FileAccess.Write);
-            //await stream.CopyToAsync(filestream);
-            //stream.Close();
+            using var filestream = new FileStream($"{string.Format("{0:ddMMyyyyHHmm}", DateTime.Now)}.xlsx", FileMode.Create, FileAccess.Write);
+            
+            await stream.CopyToAsync(filestream);
+            stream.Close();
         });
     }
 }
