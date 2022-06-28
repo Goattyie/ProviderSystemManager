@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CreateAbonentTypeSuccess" xml:space="preserve">
+    <value>Тип абонента был добавлен успешно</value>
+  </data>
+  <data name="CreateOwnTypeSuccess" xml:space="preserve">
+    <value>Тип собственности был добавлен успешно</value>
+  </data>
   <data name="CreateUserSuccess" xml:space="preserve">
     <value>Пользователь был добавлен</value>
   </data>

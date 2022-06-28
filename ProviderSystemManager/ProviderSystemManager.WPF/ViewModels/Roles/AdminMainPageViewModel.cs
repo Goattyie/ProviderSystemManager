@@ -10,13 +10,18 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
     {
         private readonly UsersPage _usersPage;
         private readonly CommonQueryPage _queryPage;
+        private readonly AbonentTypesPage _abonentTypesPage;
 
-        public AdminMainPageViewModel(UsersPage usersPage, CommonQueryPage queryPage)
+        public AdminMainPageViewModel(UsersPage usersPage, CommonQueryPage queryPage, AbonentTypesPage abonentTypesPage, OwnTypePage ownTypePage)
         {
             _usersPage = usersPage;
             _queryPage = queryPage;
+            _abonentTypesPage = abonentTypesPage;
+            _ownTypePage = ownTypePage;
             CurrentTablePage = _usersPage;
         }
+
+        private readonly OwnTypePage _ownTypePage;
 
         public Page CurrentTablePage { get; set; }
         public Page OperatorsPage { get; set; }
@@ -27,6 +32,8 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
             {
                 case "users": CurrentTablePage = _usersPage; break;
                 case "queries": CurrentTablePage = _queryPage; break;
+                case "abonent types": CurrentTablePage = _abonentTypesPage; break;
+                case "own types": CurrentTablePage = _ownTypePage; break;
             }
         });
     }

@@ -16,6 +16,8 @@ public abstract class AbstractService<TCreateDto, TUpdateDto, TGetDto, TModel> :
     where TGetDto : IGetDto
     where TModel: BaseModel
 {
+
+    public static event Action<IEnumerable<TGetDto>> OnCreate;
     public AbstractService(IMapper mapper, IRepository<TModel> repository)
     {
         Mapper = mapper;
@@ -55,7 +57,9 @@ public abstract class AbstractService<TCreateDto, TUpdateDto, TGetDto, TModel> :
         await Repository.Create(models);
 
         var getDtos = Mapper.Map<IEnumerable<TGetDto>>(models);
-        
+
+        OnCreate?.Invoke(getDtos);
+
         return OperationResponse.Ok(getDtos.First());
 
     }

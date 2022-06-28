@@ -19,15 +19,15 @@
             <Menu VerticalAlignment="Center"
                   Background="Transparent">
                 <MenuItem Header="Справочники">
-                    <MenuItem Header="Типы абонентов"/>
-                    <MenuItem Header="Типы собственности"/>
+                    <MenuItem Header="Типы абонентов" Command="{Binding OnTableSelect}" CommandParameter="abonent types"/>
+                    <MenuItem Header="Типы собственности" Command="{Binding OnTableSelect}" CommandParameter="own types"/>
                 </MenuItem>
             </Menu>
             <Button BorderBrush="Transparent" 
                     Background="Transparent" 
                     Content="Операторы" 
                     Command="{Binding OnTableSelect}"
-                    CommandParameter="User"/>
+                    CommandParameter="users"/>
             <Button BorderBrush="Transparent" 
                     Background="Transparent" 
                     Content="Запросы" 

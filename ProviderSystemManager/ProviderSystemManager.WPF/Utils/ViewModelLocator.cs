@@ -37,5 +37,9 @@ namespace ProviderSystemManager.WPF.Utils
         public AbonentsByContractsSumAndDateQueryPageViewModel AbonentsByContractsSumAndDateQueryPageViewModel => IoC.Resolve<AbonentsByContractsSumAndDateQueryPageViewModel>();
         public FirmsSumConnectionCostInflationQueryPageViewModel FirmsSumConnectionCostInflationQueryPageViewModel => IoC.Resolve<FirmsSumConnectionCostInflationQueryPageViewModel>();
         public FirmsSumConnectionCostMoreAvgQueryPageViewModel FirmsSumConnectionCostMoreAvgQueryPageViewModel => IoC.Resolve<FirmsSumConnectionCostMoreAvgQueryPageViewModel>();
+        public AbonentTypePageViewModel AbonentTypePageViewModel => IoC.Resolve<AbonentTypePageViewModel>();
+        public OwnTypePageViewModel OwnTypePageViewModel => IoC.Resolve<OwnTypePageViewModel>();
+        public AbonentTypeCreateWindowViewModel AbonentTypeCreateWindowViewModel => IoC.Resolve<AbonentTypeCreateWindowViewModel>();
+        public OwnTypeCreateWindowViewModel OwnTypeCreateWindowViewModel => IoC.Resolve<OwnTypeCreateWindowViewModel>();
     }
 }

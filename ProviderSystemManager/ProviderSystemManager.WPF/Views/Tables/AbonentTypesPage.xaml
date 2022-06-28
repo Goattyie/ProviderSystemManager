@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AbonentTypesPage">
+      Title="AbonentTypesPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=AbonentTypePageViewModel}">
 
     <Page.Resources>
         <ResourceDictionary Source="../../Styles.xaml"/>
@@ -25,35 +25,34 @@
                    FontWeight="Bold">Виды абонентов</Label>
 
         <DataGrid Grid.Row="1"
-                  BorderBrush="Black"
-                  BorderThickness="2"
-                  AutoGenerateColumns="False"
-                  Background="Transparent"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False">
+                  Style="{StaticResource UsualDataGrid}"
+                  SelectedItem="{Binding SelectedItem}"
+                  ItemsSource="{Binding Data}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" 
                                     Width="60"
-                                    HeaderStyle="{StaticResource HorizontalCenterAlign}"/>
+                                    HeaderStyle="{StaticResource HorizontalCenterAlign}"
+                                    Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Название" 
                                     Width="50*"
-                                    HeaderStyle="{StaticResource HorizontalCenterAlign}"/>
+                                    HeaderStyle="{StaticResource HorizontalCenterAlign}"
+                                    Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="431*"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1"
-                    Style="{StaticResource UsualBtnStyle}"
+            <Button Style="{StaticResource UsualBtnStyle}"
+                    Margin="10 5"
                     Content="Добавить"
                     Command="{Binding OnCreate}"/>
 
-            <Button Grid.Column="2"
+            <Button Grid.Column="1"
+                    Margin="10 5"
                     Content="Удалить"
                     Style="{StaticResource UsualBtnStyle}"
                     Command="{Binding OnDelete}"/>

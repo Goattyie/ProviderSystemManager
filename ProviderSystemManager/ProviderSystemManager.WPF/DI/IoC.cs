@@ -20,6 +20,7 @@ using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.DAL.Models.Queries;
 using ProviderSystemManager.DAL.Queries.Interfaces;
 using ProviderSystemManager.DAL.Queries;
+using ProviderSystemManager.WPF.Views.Tables.CreateUpdate;
 
 namespace ProviderSystemManager.WPF.DI
 {
@@ -39,6 +40,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<UsersPage>();
             services.AddTransient<FirmPage>();
             services.AddTransient<AbonentPage>();
+            services.AddTransient<AbonentTypesPage>();
+            services.AddTransient<OwnTypePage>();
             services.AddTransient<ContractPage>();
             services.AddTransient<ServicePage>();
             services.AddTransient<CommonQueryPage>();
@@ -58,6 +61,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<AbonentsByContractsSumAndDateQueryPage>();
             services.AddTransient<FirmsSumConnectionCostInflationQueryPage>();
             services.AddTransient<FirmsSumConnectionCostMoreAvgQueryPage>();
+            services.AddTransient<AbonentTypeCreateWindow>();
+            services.AddTransient<OwnTypeCreateWindow>();
 
             #endregion
 
@@ -91,6 +96,10 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<AbonentsByContractsSumAndDateQueryPageViewModel>();
             services.AddTransient<FirmsSumConnectionCostInflationQueryPageViewModel>();
             services.AddTransient<FirmsSumConnectionCostMoreAvgQueryPageViewModel>();
+            services.AddTransient<AbonentTypePageViewModel>();
+            services.AddTransient<OwnTypePageViewModel>();
+            services.AddTransient<AbonentTypeCreateWindowViewModel>();
+            services.AddTransient<OwnTypeCreateWindowViewModel>();
 
             #endregion
 

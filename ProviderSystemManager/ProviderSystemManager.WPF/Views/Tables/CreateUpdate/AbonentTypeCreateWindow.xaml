@@ -1,0 +1,31 @@
+﻿<Window x:Class="ProviderSystemManager.WPF.Views.Tables.CreateUpdate.AbonentTypeCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables.CreateUpdate"
+        mc:Ignorable="d"
+        Title="Добавление типа абонентов" Height="150" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=AbonentTypeCreateWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Тип абонента"
+                 Margin="10 15"
+                 Text="{Binding CreateDto.Name}"/>
+
+        <Button Grid.Row="1"
+                Margin="10 15"
+                Style="{StaticResource UsualBtnStyle}"
+                Command="{Binding CreateCommand}"
+                Content="Добавить"/>
+
+    </Grid>
+</Window>
