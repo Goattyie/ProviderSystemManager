@@ -5,38 +5,24 @@ namespace ProviderSystemManager.DAL.TableCreators;
 
 public class ContractCreator 
 {
+    public static int Count => 40000;
     public static void Init(ProviderDbContext dbContext)
     {
-        var contract1 = new Contract()
-        {
-            FirmId = 1, 
-            AbonentId = 1, 
-            ConnectionCost = 123.1m, 
-            ConnectionDate = DateOnly.FromDateTime(DateTime.Now),
-            ForwardingCost = 111.23m
-        };
-        
-        var contract2 = new Contract()
-        {
-            FirmId = 2, 
-            AbonentId = 2, 
-            ConnectionCost = 250, 
-            ConnectionDate = DateOnly.FromDateTime(DateTime.Now),
-            ForwardingCost = 600
-        };
-        
-        var contract3 = new Contract()
-        {
-            FirmId = 1, 
-            AbonentId = 2, 
-            ConnectionCost = 445, 
-            ConnectionDate = DateOnly.FromDateTime(DateTime.Now),
-            ForwardingCost = 64.5m
-        };
+        var random = new Random();
 
-        dbContext.Contracts?.Add(contract1);
-        dbContext.Contracts?.Add(contract2);
-        dbContext.Contracts?.Add(contract3);
+        for(int i = 0; i < 40000; i++)
+        {
+            var contract = new Contract()
+            {
+                FirmId = random.Next(1, FirmCreator.Count),
+                AbonentId = random.Next(1, AbonentCreator.Count),
+                ConnectionCost = (decimal)(random.Next(1, 10000) + random.NextDouble()),
+                ConnectionDate = DateOnly.FromDateTime(DateTime.Now.AddDays(random.Next(-1000, 0))),
+                ForwardingCost = (decimal)(random.Next(1, 10000) + random.NextDouble())
+            };
+
+            dbContext.Contracts?.Add(contract);
+        }
 
         dbContext.SaveChanges();
     }

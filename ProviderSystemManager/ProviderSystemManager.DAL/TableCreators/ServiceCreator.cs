@@ -5,15 +5,17 @@ namespace ProviderSystemManager.DAL.TableCreators;
 
 public class ServiceCreator
 {
+    public static int Count => 40000;
     public static void Init(ProviderDbContext dbContext)
     {
-        var service1 = new Service{AbonentId = 1, Size = 3400, RecievingDate = DateOnly.FromDateTime(DateTime.Now), FirmId = 1};
-        var service2 = new Service{AbonentId = 2, Size = 1700, RecievingDate = DateOnly.FromDateTime(DateTime.Now), FirmId = 2};
-        var service3 = new Service{AbonentId = 3, Size = 2500, RecievingDate = DateOnly.FromDateTime(DateTime.Now), FirmId = 1};
+        var random = new Random();
 
-        dbContext.Services?.Add(service1);
-        dbContext.Services?.Add(service2);
-        dbContext.Services?.Add(service3);
+        for(int i = 0; i < Count; i++)
+        {
+            var service = new Service { AbonentId = random.Next(1, AbonentCreator.Count), Size = random.Next(1, 100000) + random.NextDouble(), RecievingDate = DateOnly.FromDateTime(DateTime.Now.AddDays(random.Next(-1000, 0))), FirmId = random.Next(1, FirmCreator.Count) };
+        
+            dbContext.Services?.Add(service);
+        }
 
         dbContext.SaveChanges();
     }

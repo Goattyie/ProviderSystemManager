@@ -5,28 +5,80 @@ namespace ProviderSystemManager.DAL.TableCreators;
 
 public class FirmCreator
 {
+    public static int Count => 20000;
+    private static string[] ProviderNames = new string[] 
+    { 
+        "Trinity", 
+        "Matrix", 
+        "Билайн", 
+        "MTC", 
+        "A Связь", 
+        "Пром канал",
+        "100с",
+        "Быстрый старт",
+        "Spike",
+        "Oww Data",
+        "Faster",
+        "No slow Ethernet",
+        "Sp. Frankov",
+        "YTL",
+        "SST",
+        "QWE"
+    };
+    public static string[] StreetNames = new string[] 
+    {
+        "Пушкина",
+        "Куйбышева",
+        "Ватутина",
+        "Титова",
+        "Гурова",
+        "Илонова",
+        "Битова",
+        "Сергова",
+        "Синяя",
+        "Ленина",
+        "Кирова",
+        "Малова",
+        "Большевиков",
+        "Иванова",
+        "Павлова",
+        "Михеева",
+        "Карда",
+        "Кумова",
+        "Семейная",
+        "Дружба",
+        "Дружная",
+        "Веселова",
+        "Смирнова",
+        "Каталова"
+    };
     public static void Init(ProviderDbContext dbContext)
     {
-        var firm1 = new Firm()
-        {
-            Name = "Trinity", 
-            Address = "ул. Пушкина д.15", 
-            Telephone = "+37546213517", 
-            OwnTypeId = 1,
-            StartWorkingYear = 2002
-        };
-        
-        var firm2 = new Firm()
-        {
-            Name = "Matrix", 
-            Address = "ул. Кирова д.38", 
-            Telephone = "+3784684628", 
-            OwnTypeId = 2,
-            StartWorkingYear = 2008
-        };
+        var ownTypeId = OwnTypeCreator.Count;
+        var random = new Random();
 
-        dbContext.Firms?.Add(firm1);
-        dbContext.Firms?.Add(firm2);
+        for (int i = 0; i < Count; i++)
+        {
+            var street = StreetNames[random.Next(StreetNames.Length - 1)];
+            var name = ProviderNames[random.Next(ProviderNames.Length - 1)];
+
+            if(ownTypeId == 0)
+                ownTypeId = OwnTypeCreator.Count;
+
+            var firm = new Firm()
+            {
+                Name = name,
+                Address = $"ул. {street} д. {i * 13}",
+                Telephone = $"071{random.Next(1000000, 9999999)}",
+                OwnTypeId = ownTypeId,
+                StartWorkingYear = (short)random.Next(1995, 2022)
+            };
+
+            ownTypeId--;
+
+            dbContext.Firms?.Add(firm);
+
+        }
 
         dbContext.SaveChanges();
     }
