@@ -1,26 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using ProviderSystemManager.BLL.Exporters.Interfaces;
+using ProviderSystemManager.BLL.Exporters.QueryExporters;
+using ProviderSystemManager.BLL.MappingConfiguration;
 using ProviderSystemManager.BLL.Services;
+using ProviderSystemManager.BLL.Services.Interfaces;
 using ProviderSystemManager.DAL;
 using ProviderSystemManager.DAL.Database;
-using ProviderSystemManager.WPF.ViewModels;
-using System.Configuration;
-using ProviderSystemManager.BLL.Services.Interfaces;
-using ProviderSystemManager.BLL.MappingConfiguration;
-using ProviderSystemManager.DAL.Repositories.Interfaces;
+using ProviderSystemManager.DAL.Queries;
+using ProviderSystemManager.DAL.Queries.Interfaces;
 using ProviderSystemManager.DAL.Repositories;
-using ProviderSystemManager.WPF.Views.Admin;
+using ProviderSystemManager.DAL.Repositories.Interfaces;
+using ProviderSystemManager.WPF.ViewModels;
+using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.WPF.ViewModels.Roles;
-using ProviderSystemManager.WPF.Views.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
-using ProviderSystemManager.WPF.Views.Roles;
+using ProviderSystemManager.WPF.Views.Admin;
 using ProviderSystemManager.WPF.Views.Queries;
-using ProviderSystemManager.WPF.ViewModels.Queries;
-using ProviderSystemManager.DAL.Models.Queries;
-using ProviderSystemManager.DAL.Queries.Interfaces;
-using ProviderSystemManager.DAL.Queries;
+using ProviderSystemManager.WPF.Views.Roles;
+using ProviderSystemManager.WPF.Views.Tables;
 using ProviderSystemManager.WPF.Views.Tables.CreateUpdate;
+using System.Collections.Generic;
+using System.Configuration;
 
 namespace ProviderSystemManager.WPF.DI
 {
@@ -156,6 +158,12 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<IAbonentService, AbonentService>();
             services.AddTransient<IServiceService, ServiceService>();
             services.AddTransient<IAbonentTypeService, AbonentTypeService>();
+
+            #endregion
+
+            #region Exporters
+
+            services.AddTransient<IExporter<IEnumerable<SumSizeFirmsModel>>, SumSizeFirmsQueryExporter>();
 
             #endregion
 

@@ -12,7 +12,7 @@ public class ServiceCreator
 
         for(int i = 0; i < Count; i++)
         {
-            var service = new Service { AbonentId = random.Next(1, AbonentCreator.Count), Size = random.Next(1, 100000) + random.NextDouble(), RecievingDate = DateOnly.FromDateTime(DateTime.Now.AddDays(random.Next(-1000, 0))), FirmId = random.Next(1, FirmCreator.Count) };
+            var service = new Service { AbonentId = random.Next(1, AbonentCreator.Count), Size = random.Next(1, 10000) + random.NextDouble(), RecievingDate = DateOnly.FromDateTime(DateTime.Now.AddDays(random.Next(-1000, 0))), FirmId = random.Next(1, FirmCreator.Count) };
         
             dbContext.Services?.Add(service);
         }
