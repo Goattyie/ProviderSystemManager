@@ -50,7 +50,17 @@ public class ContractService : AbstractService<ContractCreateDto, ContractUpdate
         
         return OperationResponse.Ok(getDtos.First());
     }
-    
+
+    public OperationResult<IEnumerable<ContractGetDto>> GetByAbonentId(int abonentId)
+    {
+        var models = Repository
+            .GetQuery()
+            .Where(x => x.AbonentId == abonentId);
+        var getDtos = Mapper.Map<IEnumerable<ContractGetDto>>(models);
+
+        return OperationResponse.Ok(getDtos);
+    }
+
     public override async Task<OperationResult<ContractGetDto>> UpdateAsync(params ContractUpdateDto[] dtos)
     {
         var models = Mapper.Map<Contract[]>(dtos);

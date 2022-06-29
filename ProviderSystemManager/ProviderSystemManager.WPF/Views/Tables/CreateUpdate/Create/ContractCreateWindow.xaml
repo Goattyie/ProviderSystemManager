@@ -1,0 +1,93 @@
+﻿<Window x:Class="ProviderSystemManager.WPF.Views.Tables.CreateUpdate.Create.ContractCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables.CreateUpdate.Create"
+        mc:Ignorable="d"
+        Title="Создание контракта" Height="450" Width="350" DataContext="{Binding Source={StaticResource VMLocator}, Path=ContractCreateWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../../Styles.xaml"/>
+    </Window.Resources>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Label HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontWeight="DemiBold">Фирма</Label>
+                <ComboBox Grid.Row="1" 
+                          ItemsSource="{Binding Firms}"
+                          Style="{StaticResource UsualComboBox}"
+                          DisplayMemberPath="Name"
+                          Margin="0 5"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Label HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontWeight="DemiBold">Абонент</Label>
+                <ComboBox Grid.Row="1" 
+                          ItemsSource="{Binding Abonents}"
+                          Style="{StaticResource UsualComboBox}"
+                          DisplayMemberPath="Name"
+                          Margin="0 5"/>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Label HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontWeight="DemiBold">Дата подключения</Label>
+                <DatePicker Grid.Row="1" 
+                            Margin="0 8"
+                            SelectedDate="{Binding ConnectionDate, StringFormat = {}{0:dd.MM.yy}}"/>
+            </Grid>
+
+            <TextBox Grid.Row="3"
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Tag="Цена подключения"
+                     Margin="0 21"
+                     Text="{Binding CreateDto.ConnectionCost}"/>
+
+            <TextBox Grid.Row="4"
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Tag="Цена пересылки"
+                     Margin="0 21"
+                     Text="{Binding CreateDto.ForwardingCost}"/>
+        </Grid>
+        
+        <Button Grid.Row="1"
+                Style="{StaticResource UsualBtnStyle}"
+                Command="{Binding ExecuteCommand}"
+                Content="Добавить"/>
+
+    </Grid>
+</Window>

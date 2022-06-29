@@ -5,7 +5,7 @@ namespace ProviderSystemManager.DAL.TableCreators;
 
 public class FirmCreator
 {
-    public static int Count => 20000;
+    public static int Count => 100;
     private static string[] ProviderNames = new string[] 
     { 
         "Trinity", 

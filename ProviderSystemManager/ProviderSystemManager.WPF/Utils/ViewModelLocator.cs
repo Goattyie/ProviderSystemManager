@@ -4,6 +4,7 @@ using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.WPF.ViewModels.Roles;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
+using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create;
 
 namespace ProviderSystemManager.WPF.Utils
 {
@@ -41,5 +42,6 @@ namespace ProviderSystemManager.WPF.Utils
         public OwnTypePageViewModel OwnTypePageViewModel => IoC.Resolve<OwnTypePageViewModel>();
         public AbonentTypeCreateWindowViewModel AbonentTypeCreateWindowViewModel => IoC.Resolve<AbonentTypeCreateWindowViewModel>();
         public OwnTypeCreateWindowViewModel OwnTypeCreateWindowViewModel => IoC.Resolve<OwnTypeCreateWindowViewModel>();
+        public ContractCreateWindowViewModel ContractCreateWindowViewModel => IoC.Resolve<ContractCreateWindowViewModel>();
     }
 }

@@ -5,7 +5,7 @@ namespace ProviderSystemManager.DAL.TableCreators;
 
 public class AbonentCreator
 {
-    public static int Count => 20000;
+    public static int Count => 100;
     public static string[] Initials => new string[]
     {
         "А.",

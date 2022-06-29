@@ -16,6 +16,7 @@ using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.WPF.ViewModels.Roles;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
+using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create;
 using ProviderSystemManager.WPF.Views.Admin;
 using ProviderSystemManager.WPF.Views.Queries;
 using ProviderSystemManager.WPF.Views.Roles;
@@ -102,6 +103,7 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<OwnTypePageViewModel>();
             services.AddTransient<AbonentTypeCreateWindowViewModel>();
             services.AddTransient<OwnTypeCreateWindowViewModel>();
+            services.AddTransient<ContractCreateWindowViewModel>();
 
             #endregion
 
