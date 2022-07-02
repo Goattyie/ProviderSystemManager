@@ -11,7 +11,7 @@ public class AbonentRepository : AbstractRepository<Abonent>, IAbonentRepository
     public override async Task<IEnumerable<Abonent>> GetAsync() => await DataSet.Include(x => x.AbonentType).AsNoTracking().ToListAsync();
     public override IEnumerable<Abonent> Get() => DataSet.Include(x => x.AbonentType).AsNoTracking();
 
-    public override async Task<Abonent> GetById(int id) =>
+    public override async Task<Abonent> GetByIdAsync(int id) =>
         await DataSet.Include(x => x.AbonentType).FirstOrDefaultAsync(x => x.Id == id);
 
 }

@@ -41,7 +41,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="15"
-                   FontWeight="Bold">Конечный код</Label>
+                   FontWeight="Bold">Конечный год</Label>
 
             <TextBox Grid.Column="3" 
                      VerticalAlignment="Center"

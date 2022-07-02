@@ -18,6 +18,7 @@ public abstract class AbstractService<TCreateDto, TUpdateDto, TGetDto, TModel> :
 {
 
     public static event Action<IEnumerable<TGetDto>> OnCreate;
+    public static event Action OnUpdate;
     public AbstractService(IMapper mapper, IRepository<TModel> repository)
     {
         Mapper = mapper;
@@ -44,9 +45,17 @@ public abstract class AbstractService<TCreateDto, TUpdateDto, TGetDto, TModel> :
 
     public async Task<OperationResult<TGetDto>> GetByIdAsync(int id)
     {
-        var model = await Repository.GetById(id);
+        var model = await Repository.GetByIdAsync(id);
         var dto = Mapper.Map<TGetDto>(model);
         
+        return OperationResponse.Ok(dto);
+    }
+
+    public OperationResult<TGetDto> GetById(int id)
+    {
+        var model = Repository.GetById(id);
+        var dto = Mapper.Map<TGetDto>(model);
+
         return OperationResponse.Ok(dto);
     }
 
@@ -71,6 +80,8 @@ public abstract class AbstractService<TCreateDto, TUpdateDto, TGetDto, TModel> :
         await Repository.Update(models);
 
         var getDtos =  Mapper.Map<IEnumerable<TGetDto>>(models);
+
+        OnUpdate?.Invoke();
 
         return OperationResponse.Ok(getDtos.First());
     }

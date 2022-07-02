@@ -11,5 +11,5 @@ public class FirmRepository : AbstractRepository<Firm>, IFirmRepository
 
     public override async Task<IEnumerable<Firm>> GetAsync() => await DataSet.Include(x => x.OwnType).AsNoTracking().ToListAsync();
     public override IEnumerable<Firm> Get() => DataSet.Include(x => x.OwnType).AsNoTracking();
-    public override async Task<Firm> GetById(int id) => await DataSet.Include(x => x.OwnType).FirstOrDefaultAsync(x => x.Id == id);
+    public override async Task<Firm> GetByIdAsync(int id) => await DataSet.Include(x => x.OwnType).FirstOrDefaultAsync(x => x.Id == id);
 }

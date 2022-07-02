@@ -17,5 +17,9 @@ public class OwnTypeCreator
         context.OwnTypes?.Add(ownType3);
 
         context.SaveChanges();
+
+        context.Entry(ownType1).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+        context.Entry(ownType2).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+        context.Entry(ownType3).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
     }
 }

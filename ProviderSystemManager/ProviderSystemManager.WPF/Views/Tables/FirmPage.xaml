@@ -30,12 +30,7 @@
                    FontWeight="Bold">Типы собственности</Label>
 
             <DataGrid Grid.Row="1"
-                      BorderThickness="2"
-                      BorderBrush="Black"
-                      AutoGenerateColumns="False"
-                      Background="Transparent"
-                      CanUserAddRows="False"
-                      CanUserDeleteRows="False"
+                      Style="{StaticResource UsualDataGrid}"
                       ItemsSource="{Binding OwnTypes}">
                 <DataGrid.Columns>
                     <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="№" Width="15*" Binding="{Binding Id}"/>
@@ -66,8 +61,7 @@
 
                 <Border Grid.Row="1"
                         Margin="0 0 0 30"
-                        BorderBrush="Black"
-                        BorderThickness="2">
+                        Style="{StaticResource InfoBorder}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -133,9 +127,9 @@
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="45"/>
                     <RowDefinition Height="187*"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <Label VerticalAlignment="Center"
@@ -144,12 +138,7 @@
                    FontWeight="Bold">Фирмы</Label>
 
                 <DataGrid Grid.Row="1"
-                          BorderThickness="2"
-                          BorderBrush="Black"
-                          AutoGenerateColumns="False"
-                          Background="Transparent"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
+                          Style="{StaticResource UsualDataGrid}"
                           ItemsSource="{Binding Firms}"
                           SelectedItem="{Binding SelectedFirm}">
                     <DataGrid.Columns>
@@ -161,20 +150,31 @@
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Row="2" 
+                            Grid.Column="0"
+                            Style="{StaticResource UsualBtnStyle}"
+                            Command="{Binding OnCreate}"
+                            Content="Добавить"
+                            Margin="10"/>
+
+                    <Button Grid.Row="2"
                             Grid.Column="1"
                             Style="{StaticResource UsualBtnStyle}"
-                            Content="Добавить"/>
+                            Command="{Binding OnUpdate}"
+                            Content="Редатировать"
+                            Margin="10"/>
 
                     <Button Grid.Row="2"
                             Grid.Column="2"
                             Style="{StaticResource UsualBtnStyle}"
-                            Content="Удалить"/>
+                            Command="{Binding OnDelete}"
+                            Content="Удалить"
+                            Margin="10"/>
                 </Grid>
             </Grid>
         </Grid>

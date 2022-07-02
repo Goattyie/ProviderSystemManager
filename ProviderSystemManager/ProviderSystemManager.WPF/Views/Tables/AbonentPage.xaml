@@ -5,9 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="AbonentPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=AbonentPageViewModel}">
 
+    <Page.Resources>
+        <ResourceDictionary Source="../../Styles.xaml"/>
+    </Page.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="239*"/>
@@ -15,14 +19,41 @@
         </Grid.ColumnDefinitions>
 
         <Grid>
-            <DataGrid AutoGenerateColumns="False"
-                  Background="Transparent"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  ItemsSource="{Binding AbonentTypes}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="413*"/>
+            </Grid.RowDefinitions>
+
+            <Label VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="Bold">Виды абонентов</Label>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Style="{StaticResource TextBoxWithWatermark}"
+                         Margin="0 5 5 5"
+                         Tag="Введите имя для поиска"/>
+                <Button Grid.Column="1"
+                        Style="{StaticResource UsualBtnStyle}"
+                        Margin="0 5"
+                        Content="Найти"/>
+
+            </Grid>
+
+            <DataGrid Grid.Row="2" 
+                      Style="{StaticResource UsualDataGrid}"
+                      ItemsSource="{Binding AbonentTypes}">
+
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Width="10*" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Название" Width="50*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Id" Width="10*" Binding="{Binding Id}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Название" Width="50*" Binding="{Binding Name}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -36,78 +67,107 @@
                 <RowDefinition Height="39*"/>
             </Grid.RowDefinitions>
 
-            <Grid Margin="30">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding Path=SelectedAbonent.Id, StringFormat='№: {0}'}"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"/>
+                <Label VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="Bold">Детальная информация</Label>
 
-                <TextBlock Grid.Row="1" 
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Text="{Binding Path=SelectedAbonent.Name, StringFormat='Название: {0}'}" />
+                <Border Grid.Row="1" 
+                        Style="{StaticResource InfoBorder}"
+                        Margin="0 0 0 30">
 
-                <TextBlock Grid.Column="1" 
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Text="{Binding Path=SelectedAbonent.Address, StringFormat='Адрес: {0}'}" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                <TextBlock  Grid.Column="1" 
-                            Grid.Row="1"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Text="{Binding Path=SelectedAbonent.Email, StringFormat='Email: {0}'}" />
+                        <TextBlock Text="{Binding Path=SelectedAbonent.Id, StringFormat='№: {0}'}"
+                                   Margin="20 0 0 0"
+                                   FontSize="15"
+                                   FontWeight="DemiBold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"/>
 
-                <TextBlock  Grid.Column="1" 
-                            Grid.Row="2" 
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Text="{Binding Path=SelectedAbonent.AbonentType.Name, StringFormat='Тип: {0}'}" />
+                        <TextBlock Grid.Row="1" 
+                                   Margin="20 0 0 0"
+                                   FontSize="15"
+                                   FontWeight="DemiBold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Text="{Binding Path=SelectedAbonent.Name, StringFormat='Название: {0}'}" />
+
+                        <TextBlock Grid.Column="1" 
+                                   Margin="20 0 0 0"
+                                   FontSize="15"
+                                   FontWeight="DemiBold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Text="{Binding Path=SelectedAbonent.Address, StringFormat='Адрес: {0}'}" />
+
+                        <TextBlock  Grid.Column="1" 
+                                    Grid.Row="1"
+                                    Margin="20 0 0 0"
+                                    FontSize="15"
+                                    FontWeight="DemiBold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Path=SelectedAbonent.Email, StringFormat='Email: {0}'}" />
+
+                        <TextBlock  Grid.Column="1" 
+                                    Grid.Row="2" 
+                                    Margin="20 0 0 0"
+                                    FontSize="15"
+                                    FontWeight="DemiBold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Path=SelectedAbonent.AbonentType.Name, StringFormat='Тип: {0}'}" />
+                    </Grid>
+                </Border>
             </Grid>
 
             <DataGrid Grid.Row="1"
-                  AutoGenerateColumns="False"
-                  Background="Transparent"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  ItemsSource="{Binding Abonents}"
-                  SelectedItem="{Binding SelectedAbonent}">
+                      Style="{StaticResource UsualDataGrid}"
+                      ItemsSource="{Binding Abonents}"
+                      SelectedItem="{Binding SelectedAbonent}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Width="10*" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Название" Width="50*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Email" Width="50*" Binding="{Binding Email}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Id" Width="10*" Binding="{Binding Id}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Название" Width="50*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource HorizontalCenterAlign}" Header="Email" Width="50*" Binding="{Binding Email}"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                <Button Style="{StaticResource UsualBtnStyle}"
+                        Margin="10"
+                        Content="Добавить"/>
+
                 <Button Grid.Column="1"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Background="Transparent"
-                        Content="Добавить"
-                        Padding="15 5"/>
+                        Style="{StaticResource UsualBtnStyle}"
+                        Margin="10"
+                        Content="Изменить"/>
 
                 <Button Grid.Column="2"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Background="Transparent"
-                        Content="Удалить"
-                        Padding="15 5"/>
+                        Style="{StaticResource UsualBtnStyle}"
+                        Margin="10"
+                        Content="Удалить"/>
             </Grid>
         </Grid>
     </Grid>

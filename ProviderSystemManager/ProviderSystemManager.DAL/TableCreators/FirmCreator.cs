@@ -77,9 +77,8 @@ public class FirmCreator
             ownTypeId--;
 
             dbContext.Firms?.Add(firm);
-
+            dbContext.SaveChanges();
+            dbContext.Entry(firm).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
         }
-
-        dbContext.SaveChanges();
     }
 }

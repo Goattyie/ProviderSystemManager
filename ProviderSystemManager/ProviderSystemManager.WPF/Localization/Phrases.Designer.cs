@@ -70,6 +70,15 @@ namespace ProviderSystemManager.WPF.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Фирма была успешно добавлена.
+        /// </summary>
+        internal static string CreateFirmSuccess {
+            get {
+                return ResourceManager.GetString("CreateFirmSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Тип собственности был добавлен успешно.
         /// </summary>
         internal static string CreateOwnTypeSuccess {
@@ -84,6 +93,24 @@ namespace ProviderSystemManager.WPF.Localization {
         internal static string CreateUserSuccess {
             get {
                 return ResourceManager.GetString("CreateUserSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фирма была успешно обнавлена.
+        /// </summary>
+        internal static string UpdateFirmSuccess {
+            get {
+                return ResourceManager.GetString("UpdateFirmSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь успешно обновлен.
+        /// </summary>
+        internal static string UpdateUserSuccess {
+            get {
+                return ResourceManager.GetString("UpdateUserSuccess", resourceCulture);
             }
         }
     }

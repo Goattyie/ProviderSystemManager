@@ -120,10 +120,19 @@
   <data name="CreateAbonentTypeSuccess" xml:space="preserve">
     <value>Тип абонента был добавлен успешно</value>
   </data>
+  <data name="CreateFirmSuccess" xml:space="preserve">
+    <value>Фирма была успешно добавлена</value>
+  </data>
   <data name="CreateOwnTypeSuccess" xml:space="preserve">
     <value>Тип собственности был добавлен успешно</value>
   </data>
   <data name="CreateUserSuccess" xml:space="preserve">
     <value>Пользователь был добавлен</value>
+  </data>
+  <data name="UpdateFirmSuccess" xml:space="preserve">
+    <value>Фирма была успешно обнавлена</value>
+  </data>
+  <data name="UpdateUserSuccess" xml:space="preserve">
+    <value>Пользователь успешно обновлен</value>
   </data>
 </root>

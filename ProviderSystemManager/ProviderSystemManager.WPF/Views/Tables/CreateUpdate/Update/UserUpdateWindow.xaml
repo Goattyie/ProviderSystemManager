@@ -1,0 +1,40 @@
+﻿<Window x:Class="ProviderSystemManager.WPF.Views.Tables.CreateUpdate.Update.UserUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables.CreateUpdate.Update"
+        mc:Ignorable="d"
+        Title="Обновление пользователя" Height="250" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UserUpdateWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../../Styles.xaml"/>
+    </Window.Resources>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox MaxHeight="30"
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Пароль"
+                 Text="{Binding Dto.Password}"/>
+
+        <ComboBox Grid.Row="1"
+                  Style="{StaticResource UsualComboBox}"
+                  MaxHeight="30"
+                  ItemsSource="{Binding Roles}"
+                  SelectedItem="{Binding SelectedRole}"/>
+
+        <Button Grid.Row="3" 
+                Content="Изменить"
+                Style="{StaticResource UsualBtnStyle}"
+                Margin="0 20"
+                FontSize="16"
+                Command="{Binding OnUpdate}"/>
+
+    </Grid>
+</Window>
+

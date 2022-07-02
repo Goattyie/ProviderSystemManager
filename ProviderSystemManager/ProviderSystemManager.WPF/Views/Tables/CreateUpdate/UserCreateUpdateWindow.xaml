@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables.CreateUpdate"
         mc:Ignorable="d"
-        Title="Добавить пользователя" Height="400" Width="400" DataContext="{Binding Source={StaticResource VMLocator}, Path=UserCreateUpdateWindowViewModel}">
+        Title="Добавить пользователя" Height="350" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=UserCreateUpdateWindowViewModel}">
+
+    <Window.Resources>
+        <ResourceDictionary Source="../../../Styles.xaml"/>
+    </Window.Resources>
+
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,19 +20,26 @@
         </Grid.RowDefinitions>
 
         <TextBox MaxHeight="30" 
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Логин"
                  Text="{Binding Login}"/>
+        
         <TextBox Grid.Row="1"
                  MaxHeight="30"
+                 Style="{StaticResource TextBoxWithWatermark}"
+                 Tag="Пароль"
                  Text="{Binding Password}"/>
+        
         <ComboBox Grid.Row="2"
                   MaxHeight="30"
-                  ItemsSource="{Binding Roles}"/>
+                  Style="{StaticResource UsualComboBox}"
+                  ItemsSource="{Binding Roles}"
+                  SelectedItem="{Binding SelectedRole}"/>
+        
         <Button Grid.Row="3" 
                 Content="Добавить"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Padding="20 5"
+                Margin="0 20"
+                Style="{StaticResource UsualBtnStyle}"
                 Command="{Binding OnCreate}"/>
 
     </Grid>

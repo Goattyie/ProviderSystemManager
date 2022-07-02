@@ -12,13 +12,17 @@ public class ServiceRepository : AbstractRepository<Service>, IServiceRepository
     }
 
     public override async Task<IEnumerable<Service>> GetAsync() =>
-        await DataSet.Include(x => x.Abonent)
+        await DataSet
+            .Include(x => x.Firm)
+            .Include(x => x.Abonent)
             .ThenInclude(x => x.AbonentType)
             .AsNoTracking()
             .ToListAsync();
 
     public override IEnumerable<Service> Get() =>
-            DataSet.Include(x => x.Abonent)
+            DataSet
+                .Include(x => x.Firm)
+                .Include(x => x.Abonent)
                 .ThenInclude(x => x.AbonentType)
                 .AsNoTracking();
 }

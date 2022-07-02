@@ -1,0 +1,67 @@
+﻿<Window x:Class="ProviderSystemManager.WPF.Views.Tables.CreateUpdate.Update.FirmUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Tables.CreateUpdate.Update"
+        mc:Ignorable="d"
+        Title="Обновление фирмы"  Height="350" Width="300" DataContext="{Binding Source={StaticResource VMLocator}, Path=FirmUpdateWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary Source="../../../../Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox Height="30"
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Tag="Название"
+                     Text="{Binding Dto.Name}"/>
+
+            <TextBox Grid.Row="1"
+                     Height="30"
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Tag="Адрес"
+                     Text="{Binding Dto.Address}"/>
+
+            <TextBox Grid.Row="2"
+                     Height="30"
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Tag="Телефон"
+                     Text="{Binding Dto.Telephone}"/>
+
+            <TextBox Grid.Row="3"
+                     Height="30"
+                     Style="{StaticResource TextBoxWithWatermark}"
+                     Tag="Год начала работы"
+                     Text="{Binding CreateDto.StartWorkingYear}"/>
+
+            <ComboBox Grid.Row="4"
+                      Height="30"
+                      Style="{StaticResource UsualComboBox}"
+                      ItemsSource="{Binding OwnTypes}"
+                      SelectedItem="{Binding SelectedOwnType}"
+                      DisplayMemberPath="Name"/>
+        </Grid>
+
+        <Button Grid.Row="1"
+                Style="{StaticResource UsualBtnStyle}"
+                Margin="0 10"
+                FontSize="16"
+                Content="Изменить"
+                Command="{Binding UpdateCommand}"/>
+
+    </Grid>
+</Window>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProviderSystemManager.WPF.DI;
+using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

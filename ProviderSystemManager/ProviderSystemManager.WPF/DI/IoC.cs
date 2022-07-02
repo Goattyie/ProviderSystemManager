@@ -17,6 +17,7 @@ using ProviderSystemManager.WPF.ViewModels.Roles;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create;
+using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Update;
 using ProviderSystemManager.WPF.Views.Admin;
 using ProviderSystemManager.WPF.Views.Queries;
 using ProviderSystemManager.WPF.Views.Roles;
@@ -66,6 +67,11 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<FirmsSumConnectionCostMoreAvgQueryPage>();
             services.AddTransient<AbonentTypeCreateWindow>();
             services.AddTransient<OwnTypeCreateWindow>();
+            services.AddTransient<MaskQueryPage>();
+            services.AddTransient<CaseQueryPage>();
+            services.AddTransient<UnionQueryPage>();
+            services.AddTransient<InQueryPage>();
+            services.AddTransient<NotInQueryPage>();
 
             #endregion
 
@@ -104,6 +110,14 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<AbonentTypeCreateWindowViewModel>();
             services.AddTransient<OwnTypeCreateWindowViewModel>();
             services.AddTransient<ContractCreateWindowViewModel>();
+            services.AddTransient<UserUpdateWindowViewModel>();
+            services.AddTransient<FirmCreateWindowViewModel>();
+            services.AddTransient<FirmUpdateWindowViewModel>();
+            services.AddTransient<MaskQueryPageViewModel>();
+            services.AddTransient<CaseQueryPageViewModel>();
+            services.AddTransient<UnionQueryPageViewModel>();
+            services.AddTransient<InQueryPageViewModel>();
+            services.AddTransient<NotInQueryPageViewModel>();
 
             #endregion
 
@@ -146,6 +160,11 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<IAbonentsByContractsSumAndDateQuery, AbonentsByContractsSumAndDateQuery>();
             services.AddTransient<IFirmsSumConnectionCostInflationQuery, FirmsSumConnectionCostInflationQuery>();
             services.AddTransient<IFirmsSumConnectionCostMoreAvgQuery, FirmsSumConnectionCostMoreAvgQuery>();
+            services.AddTransient<IMaskQuery, MaskQuery>();
+            services.AddTransient<IСaseQuery, СaseQuery>();
+            services.AddTransient<IUnionQuery, UnionQuery>();
+            services.AddTransient<IInQuery, InQuery>();
+            services.AddTransient<INotInQuery, NotInQuery>();
 
             #endregion
 

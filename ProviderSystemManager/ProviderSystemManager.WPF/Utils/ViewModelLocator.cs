@@ -5,6 +5,7 @@ using ProviderSystemManager.WPF.ViewModels.Roles;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create;
+using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Update;
 
 namespace ProviderSystemManager.WPF.Utils
 {
@@ -43,5 +44,13 @@ namespace ProviderSystemManager.WPF.Utils
         public AbonentTypeCreateWindowViewModel AbonentTypeCreateWindowViewModel => IoC.Resolve<AbonentTypeCreateWindowViewModel>();
         public OwnTypeCreateWindowViewModel OwnTypeCreateWindowViewModel => IoC.Resolve<OwnTypeCreateWindowViewModel>();
         public ContractCreateWindowViewModel ContractCreateWindowViewModel => IoC.Resolve<ContractCreateWindowViewModel>();
+        public UserUpdateWindowViewModel UserUpdateWindowViewModel => IoC.Resolve<UserUpdateWindowViewModel>();
+        public FirmCreateWindowViewModel FirmCreateWindowViewModel => IoC.Resolve<FirmCreateWindowViewModel>();
+        public FirmUpdateWindowViewModel FirmUpdateWindowViewModel => IoC.Resolve<FirmUpdateWindowViewModel>();
+        public MaskQueryPageViewModel MaskQueryPageViewModel => IoC.Resolve<MaskQueryPageViewModel>();
+        public CaseQueryPageViewModel CaseQueryPageViewModel => IoC.Resolve<CaseQueryPageViewModel>();
+        public UnionQueryPageViewModel UnionQueryPageViewModel => IoC.Resolve<UnionQueryPageViewModel>();
+        public InQueryPageViewModel InQueryPageViewModel => IoC.Resolve<InQueryPageViewModel>();
+        public NotInQueryPageViewModel NotInQueryPageViewModel => IoC.Resolve<NotInQueryPageViewModel>();
     }
 }

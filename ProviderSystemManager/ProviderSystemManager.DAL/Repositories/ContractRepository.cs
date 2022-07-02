@@ -23,7 +23,7 @@ public class ContractRepository : AbstractRepository<Contract>, IContractReposit
             .Include(x => x.Abonent)
             .ThenInclude(a => a.AbonentType).AsNoTracking();
 
-    public override async Task<Contract> GetById(int id) => await DataSet.Include(x => x.Firm)
+    public override async Task<Contract> GetByIdAsync(int id) => await DataSet.Include(x => x.Firm)
         .ThenInclude(f => f.OwnType)
         .Include(x => x.Abonent)
         .ThenInclude(a => a.AbonentType)

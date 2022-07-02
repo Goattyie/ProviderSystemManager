@@ -12,6 +12,7 @@ public class DbInitializer
         dbContext.Database.EnsureDeleted();
         dbContext.Database.Migrate();
 
+        QueryCreator.Init(dbContext);
         UserCreator.Init(dbContext);
         OwnTypeCreator.Init(dbContext);
         AbonentTypeCreator.Init(dbContext);
@@ -19,6 +20,5 @@ public class DbInitializer
         FirmCreator.Init(dbContext);
         ContractCreator.Init(dbContext);
         ServiceCreator.Init(dbContext);
-        QueryCreator.Init(dbContext);
     }
 }

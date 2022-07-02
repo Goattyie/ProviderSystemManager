@@ -13,6 +13,8 @@ namespace ProviderSystemManager.BLL.Services;
 
 public class FirmService : AbstractService<FirmCreateDto, FirmUpdateDto, FirmGetDto, Firm>, IFirmService
 {
+    public static event Action<IEnumerable<FirmGetDto>> OnCreate;
+    public static event Action OnUpdate;
     private readonly IOwnTypeRepository _ownTypesRepository;
 
     public FirmService(IOwnTypeRepository ownTypesRepository, IMapper mapper, IFirmRepository repository)
@@ -38,7 +40,9 @@ public class FirmService : AbstractService<FirmCreateDto, FirmUpdateDto, FirmGet
 
         await Repository.Create(models);
 
-        var getDtos = Mapper.Map<FirmGetDto[]>(models);
+        var getDtos = Mapper.Map<IEnumerable<FirmGetDto>>(models);
+
+        OnCreate?.Invoke(getDtos);
         
         return OperationResponse.Ok(getDtos.First());
     }
@@ -61,6 +65,8 @@ public class FirmService : AbstractService<FirmCreateDto, FirmUpdateDto, FirmGet
         await Repository.Update(models);
 
         var getDtos = Mapper.Map<FirmGetDto[]>(models);
+
+        OnUpdate?.Invoke();
         
         return OperationResponse.Ok(getDtos.First());
     }

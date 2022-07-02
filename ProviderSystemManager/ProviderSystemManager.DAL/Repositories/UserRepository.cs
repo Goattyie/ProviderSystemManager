@@ -10,17 +10,20 @@ public class UserRepository : AbstractRepository<User>, IUserRepository
     public UserRepository(ProviderDbContext dbContext) : base(dbContext) { }
     public override async Task Create(params User[] models)
     {
-        var createUsersSqlQuery = models.Select(x => $"CREATE USER {x.Login} WITH SUPERUSER PASSWORD '{x.Password}'; GRANT {x.Role.ToString()} TO {x.Login};");
+        var createUsersSqlQuery = models.Select(x => $"CREATE USER {x.Login} WITH SUPERUSER PASSWORD '{x.Password}';");
         var result = await DbContext.Database.ExecuteSqlRawAsync(string.Join(";", createUsersSqlQuery));
 
         await base.Create(models);
     }
 
+    public override async Task Update(params User[] models)
+    {
+        var updateUsersSqlQuery = models.Select(x => $"UPDATE users SET role = {(int)x.Role}, password = '{x.Password}' where users.id = {x.Id}");
+        var result = await DbContext.Database.ExecuteSqlRawAsync(string.Join(";", updateUsersSqlQuery));
+    }
+
     public override async Task Remove(params User[] models)
     {
-        var removeUsersSqlQuery = models.Select(x => $"DROP USER {x.Login};");
-        var result = await DbContext.Database.ExecuteSqlRawAsync(string.Join(";", removeUsersSqlQuery));
-
         await base.Remove(models);
     }
 }

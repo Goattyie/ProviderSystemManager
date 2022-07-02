@@ -23,12 +23,12 @@ namespace ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create
             Firms = new(_firmService.Get().Result);
         }
 
-        public DateTime ConnectionDate
+        public string ConnectionDate
         {
             get => GetValue<string>(nameof(ConnectionDate));
             set
             {
-                CreateDto.ConnectionDate = value.ToString("dd.MM.yy");
+                CreateDto.ConnectionDate = value.ToString();
                 SetValue(nameof(ConnectionDate));
             }
         }

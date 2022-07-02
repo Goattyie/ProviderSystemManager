@@ -32,5 +32,6 @@ public class ProviderDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         builder.UseNpgsql("User ID=postgres;Password=1956;Host=localhost;Port=5432;Database=ProviderSM;Pooling=true;");
+        //builder.LogTo(Console.WriteLine);
     }
 }

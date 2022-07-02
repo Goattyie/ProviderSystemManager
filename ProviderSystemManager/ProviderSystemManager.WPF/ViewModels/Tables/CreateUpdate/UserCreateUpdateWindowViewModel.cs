@@ -39,21 +39,24 @@ namespace ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate
                 Role = (int)SelectedRole
             };
 
-            var createResult = await _service.CreateAsync(createDto);
-
-            if(createResult.CodeResult == Shared.CodeResult.Bad)
+            try
             {
-                MessageBoxManager.ShowError(createResult.Errors.First());
-                return;
-            }
+                var createResult = await _service.CreateAsync(createDto);
 
-            MessageBoxManager.ShowSuccess(Phrases.CreateUserSuccess);
+                if (createResult.CodeResult == Shared.CodeResult.Bad)
+                {
+                    MessageBoxManager.ShowError(createResult.Errors.First());
+                    return;
+                }
 
-            Login = string.Empty;
-            Password = string.Empty;
-            SelectedRole = Roles.FirstOrDefault();
+                MessageBoxManager.ShowSuccess(Phrases.CreateUserSuccess);
 
-            OnUserCreate?.Invoke(createResult.Result);
+                Login = string.Empty;
+                Password = string.Empty;
+                SelectedRole = Roles.FirstOrDefault();
+
+                OnUserCreate?.Invoke(createResult.Result);
+            }catch(Exception ex) { MessageBoxManager.ShowError(ex.Message); }
         });
     }
 }
