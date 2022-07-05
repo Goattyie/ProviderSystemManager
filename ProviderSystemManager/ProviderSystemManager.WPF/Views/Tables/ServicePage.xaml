@@ -23,12 +23,13 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="413*"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <Label VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="18"
-                   FontWeight="Bold">Фирмы</Label>
+                   FontWeight="Bold">Абоненты</Label>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -48,14 +49,33 @@
 
             <DataGrid Grid.Row="2"
                       Style="{StaticResource UsualDataGrid}"
-                      ItemsSource="{Binding Firms}"
-                      SelectedItem="{Binding SelectedFirm}">
+                      ItemsSource="{Binding Abonents}"
+                      SelectedItem="{Binding SelectedAbonent}">
                 <DataGrid.Columns>
                     <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="№" Width="15*" Binding="{Binding Id}"/>
                     <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Имя" Width="50*" Binding="{Binding Name}"/>
                     <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Email" Width="50*" Binding="{Binding Email}"/>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Style="{StaticResource UsualBtnStyle}"
+                    Command="{Binding CreateCommand}"
+                    Content="Добавить"
+                    Margin="10"/>
+
+            <Button Grid.Column="1"
+                    Style="{StaticResource UsualBtnStyle}"
+                    Command="{Binding CreateCommand}"
+                    Content="Удалить"
+                    Margin="10"/>
+            </Grid>
         </Grid>
 
         <Grid Margin="10 0 0 0" 
@@ -161,7 +181,7 @@
                           SelectedItem="{Binding SelectedService}">
                     <DataGrid.Columns>
                         <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="№" Width="10*" Binding="{Binding Id}"/>
-                        <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Фирма" Width="50*" Binding="{Binding Firm.Name}"/>
+                        <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Абонент" Width="50*" Binding="{Binding Abonent.Name}"/>
                         <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Предоставляемый объем (Мб)" Width="50*" Binding="{Binding Size}"/>
                     </DataGrid.Columns>
                 </DataGrid>

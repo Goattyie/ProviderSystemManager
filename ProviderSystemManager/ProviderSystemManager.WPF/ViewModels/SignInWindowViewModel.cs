@@ -45,6 +45,7 @@ namespace ProviderSystemManager.WPF.ViewModels
                 return;
             }
 
+            User.Id = userResponse.Result.Id;
             User.Login = userResponse.Result.Login;
             User.Password = userResponse.Result.Password;
             User.Role = Enum.Parse<UserRole>(userResponse.Result.UserRole);

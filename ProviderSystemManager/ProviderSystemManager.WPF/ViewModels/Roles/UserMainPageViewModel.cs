@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using ProviderSystemManager.WPF.Views.Roles.User;
 using ProviderSystemManager.WPF.Views.Tables;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,16 +9,14 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
     internal class UserMainPageViewModel : BindableBase
     {
 
-        private readonly AbonentPage _abonentPage;
         private readonly ContractPage _contractPage;
-        private readonly ServicePage _servicePage;
+        private readonly UserAboutPage _userAboutPage;
 
-        public UserMainPageViewModel(AbonentPage abonentPage, ContractPage contractPage, ServicePage servicePage)
+        public UserMainPageViewModel(ContractPage contractPage, UserAboutPage userAboutPage)
         {
-            _abonentPage = abonentPage;
             _contractPage = contractPage;
-            _servicePage = servicePage;
-            CurrentTablePage = contractPage;
+            _userAboutPage = userAboutPage;
+            CurrentTablePage = _contractPage;
         }
 
         public Page CurrentTablePage { get; set; }
@@ -26,9 +25,8 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
         {
             switch (tableName.ToString())
             {
-                case "abonent": CurrentTablePage = _abonentPage; break;
                 case "contract": CurrentTablePage = _contractPage; break;
-                case "service": CurrentTablePage = _servicePage; break;
+                case "about": CurrentTablePage = _userAboutPage; break;
             }
         });
     }

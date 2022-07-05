@@ -8,5 +8,5 @@ namespace ProviderSystemManager.BLL.Services.Interfaces;
 
 public interface IContractService : IService<ContractCreateDto, ContractUpdateDto, ContractGetDto>
 {
-    OperationResult<IEnumerable<ContractGetDto>> GetByAbonentId(int abonentId);
+    OperationResult<IEnumerable<ContractGetDto>> GetByFirmId(int firmId);
 }

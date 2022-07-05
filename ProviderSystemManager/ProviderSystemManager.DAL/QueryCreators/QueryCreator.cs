@@ -63,35 +63,77 @@ namespace ProviderSystemManager.DAL.QueryCreators
 
             #endregion
 
-            #region TRIGGERS
+            #region GRANDS
 
-            dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION users_after_update() RETURNS trigger AS $$ BEGIN IF OLD.role <> NEW.role THEN IF OLD.role = 1 THEN EXECUTE 'ALTER GROUP operator DROP USER ' || NEW.login; EXECUTE 'GRANT operator2 TO ' || NEW.login; END IF; IF OLD.role = 2 THEN EXECUTE 'ALTER GROUP operator2 DROP USER ' || NEW.login; EXECUTE 'GRANT operator TO ' || NEW.login; END IF; IF OLD.role = 0 THEN RAISE EXCEPTION 'Администаторов нельзя понижать в должности'; END IF; END IF; RETURN NEW; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER users_after_update_trigger AFTER UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE users_after_update();");
-            dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION users_after_insert() RETURNS trigger AS $$ BEGIN IF NEW.role = 0 THEN EXECUTE 'GRANT admin TO ' || NEW.login; END IF; IF NEW.role = 1 THEN EXECUTE 'GRANT operator TO ' || NEW.login; END IF; IF NEW.role = 2 THEN EXECUTE 'GRANT operator2 TO ' || NEW.login; END IF; RETURN NULL; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER users_after_insert_trigger AFTER INSERT ON users FOR EACH ROW EXECUTE PROCEDURE users_after_insert();");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON firms TO abonent;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON services TO abonent;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON contracts TO abonent;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON abonents TO abonent;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON abonent_types TO abonent;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON own_types TO abonent;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON users TO abonent;");
+
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON firms TO operator;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON services TO operator;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON contracts TO operator;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON abonents TO operator;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON abonent_types TO operator;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON own_types TO operator;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT ON users TO operator;");
+
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON firms TO admin;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON services TO admin;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON contracts TO admin;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON abonents TO admin;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON abonent_types TO admin;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON own_types TO admin;");
+            dbContext.Database.ExecuteSqlRaw("GRANT SELECT, DELETE, UPDATE, INSERT ON users TO admin;");
+
+            //#endregion
+
+            //#region TRIGGERS
+
+            dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION users_after_update() RETURNS trigger AS $$ BEGIN IF OLD.role <> NEW.role THEN IF OLD.role = 1 THEN EXECUTE 'ALTER GROUP operator DROP USER ' || NEW.login; EXECUTE 'GRANT abonent TO ' || NEW.login; END IF; IF OLD.role = 2 THEN EXECUTE 'ALTER GROUP abonent DROP USER ' || NEW.login; EXECUTE 'GRANT operator TO ' || NEW.login; END IF; IF OLD.role = 0 THEN RAISE EXCEPTION 'Администаторов нельзя понижать в должности'; END IF; END IF; RETURN NEW; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER users_after_update_trigger AFTER UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE users_after_update();");
+            dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION users_after_insert() RETURNS trigger AS $$ BEGIN IF NEW.role = 0 THEN EXECUTE 'GRANT admin TO ' || NEW.login; END IF; IF NEW.role = 1 THEN EXECUTE 'GRANT operator TO ' || NEW.login; END IF; IF NEW.role = 2 THEN EXECUTE 'GRANT abonent TO ' || NEW.login; END IF; RETURN NULL; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER users_after_insert_trigger AFTER INSERT ON users FOR EACH ROW EXECUTE PROCEDURE users_after_insert();");
             dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION users_after_delete() RETURNS trigger AS $$ BEGIN EXECUTE 'DROP USER ' || OLD.login; RETURN NULL; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER users_after_delete_trigger AFTER DELETE ON users FOR EACH ROW EXECUTE PROCEDURE users_after_delete();");
             dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION firms_before_delete() RETURNS trigger AS $$ BEGIN IF (SELECT COUNT(*) FROM (SELECT FROM contracts WHERE firm_id=OLD.id) p) <> 0 THEN RAISE EXCEPTION 'У данной фирмы еще есть контракты с пользователями'; END IF; RETURN NULL; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER firms_before_delete_trigger BEFORE DELETE ON firms FOR EACH ROW EXECUTE PROCEDURE firms_before_delete();");
             dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION firms_before_insert() RETURNS trigger AS $$ BEGIN IF (SELECT COUNT(*) FROM (SELECT FROM firms WHERE name=NEW.name AND telephone=NEW.telephone) p) <> 0 THEN RAISE EXCEPTION 'Фирма с таким названием и номером уже существует'; END IF; RETURN NEW; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER firms_before_insert_trigger BEFORE INSERT ON firms FOR EACH ROW EXECUTE PROCEDURE firms_before_insert();");
             dbContext.Database.ExecuteSqlRaw("CREATE OR REPLACE FUNCTION firms_before_update() RETURNS trigger AS $$ BEGIN IF (SELECT COUNT(*) FROM (SELECT FROM firms WHERE name=NEW.name AND telephone=NEW.telephone) p) <> 0 THEN RAISE EXCEPTION 'Фирма с таким названием и номером уже существует'; END IF; RETURN NEW; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER firms_before_update_trigger BEFORE UPDATE ON firms FOR EACH ROW EXECUTE PROCEDURE firms_before_update();");
             dbContext.Database.ExecuteSqlRaw("CREATE FUNCTION firms_before_insert_increment() RETURNS trigger AS $$ BEGIN NEW.id := nextval('firms_seq'); RETURN NEW; END; $$ LANGUAGE plpgsql SECURITY DEFINER;  CREATE TRIGGER firms_before_insert_increment_trigger BEFORE INSERT ON firms FOR EACH ROW EXECUTE PROCEDURE firms_before_insert_increment();");
 
-            #endregion
+            //#endregion
 
-            #region SECURITY
+            //#region SECURITY
 
             dbContext.Database.ExecuteSqlRaw("ALTER TABLE firms ENABLE ROW LEVEL SECURITY;");
             dbContext.Database.ExecuteSqlRaw("ALTER TABLE abonents ENABLE ROW LEVEL SECURITY;");
             dbContext.Database.ExecuteSqlRaw("ALTER TABLE contracts ENABLE ROW LEVEL SECURITY;");
             dbContext.Database.ExecuteSqlRaw("ALTER TABLE services ENABLE ROW LEVEL SECURITY;");
 
-            #endregion
+            //#endregion
 
-            #region POLICY
+            //#region POLICY
 
-            dbContext.Database.ExecuteSqlRaw("CREATE POLICY firms_operator_staff ON firms TO operator USING (TRUE);");
-            dbContext.Database.ExecuteSqlRaw("CREATE POLICY contracts_staff ON contracts TO operator USING (TRUE);");
-            dbContext.Database.ExecuteSqlRaw("CREATE POLICY services_staff ON services TO operator USING (TRUE);");
-            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonents_staff ON abonents TO operator USING (TRUE);");
-            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonent_types_staff ON abonent_types TO operator USING (TRUE);");
-            dbContext.Database.ExecuteSqlRaw("CREATE POLICY own_types_staff ON own_types TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY firms_abonent ON firms TO abonent USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY contracts_abonent ON contracts TO abonent USING (abonent_id = (SELECT id FROM users WHERE login = CURRENT_USER));");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY services_abonent ON services TO abonent USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonents_abonent ON abonents TO abonent USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonent_types_abonent ON abonent_types TO abonent USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY own_types_abonent ON own_types TO abonent USING (TRUE);");
+
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY firms_operator ON firms TO operator USING (id = (SELECT id FROM users WHERE login = CURRENT_USER));");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY contracts_operator ON contracts TO operator USING (firm_id = (SELECT id FROM users WHERE login = CURRENT_USER));");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY services_operator ON services TO operator USING (firm_id = (SELECT id FROM users WHERE login = CURRENT_USER));");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonents_operator ON abonents TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonent_types_operator ON abonent_types TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY own_types_operator ON own_types TO operator USING (TRUE);");
+
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY firms_admin ON firms TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY contracts_admin ON contracts TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY services_admin ON services TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonents_admin ON abonents TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY abonent_types_admin ON abonent_types TO operator USING (TRUE);");
+            dbContext.Database.ExecuteSqlRaw("CREATE POLICY own_types_admin ON own_types TO operator USING (TRUE);");
 
             #endregion
         }

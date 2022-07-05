@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProviderSystemManager.WPF.Views.Queries"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="MaskQueryPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=MaskQueryPageViewModel}">
 
     <Page.Resources>
@@ -31,6 +31,7 @@
                    FontWeight="Bold">Подстрока</Label>
 
             <TextBox Grid.Column="1" 
+                     FontSize="20"
                      VerticalAlignment="Center"
                      Margin="0 0 20 0"
                      Text="{Binding Value}"/>

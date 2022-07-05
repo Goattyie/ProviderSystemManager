@@ -23,13 +23,12 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="413*"/>
-                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <Label VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="18"
-                   FontWeight="Bold">Абоненты</Label>
+                   FontWeight="Bold">Фирмы</Label>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -46,37 +45,18 @@
                         Content="Найти"/>
 
             </Grid>
-            
+
             <DataGrid Grid.Row="2"
                       Style="{StaticResource UsualDataGrid}"
-                      ItemsSource="{Binding Abonents}"
-                      SelectedItem="{Binding SelectedAbonent}">
+                      ItemsSource="{Binding Firms}"
+                      SelectedItem="{Binding SelectedFirm}">
                 <DataGrid.Columns>
                     <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="№" Width="15*" Binding="{Binding Id}"/>
-                    <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Имя" Width="50*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Email" Width="50*" Binding="{Binding Email}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Название" Width="50*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn HeaderStyle="{StaticResource ResourceKey=HorizontalCenterAlign}" Header="Адрес" Width="50*" Binding="{Binding Address}"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Row="2" 
-                            Grid.Column="0"
-                            Style="{StaticResource UsualBtnStyle}"
-                            Content="Добавить"
-                            Margin="10"/>
-
-                <Button Grid.Row="2"
-                            Grid.Column="1"
-                            Style="{StaticResource UsualBtnStyle}"
-                            Content="Удалить"
-                            Margin="10"/>
-            </Grid>
-            
         </Grid>
 
         <Grid Margin="10 0 0 0" 

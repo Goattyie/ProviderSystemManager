@@ -17,7 +17,7 @@ namespace ProviderSystemManager.WPF.ViewModels
             {
                 case UserRole.Admin: CurrentPage = adminPage; break;
                 case UserRole.Operator: CurrentPage = operatorPage; break;
-                case UserRole.User: CurrentPage = userPage; break;
+                case UserRole.Abonent: CurrentPage = userPage; break;
             }
         }
 

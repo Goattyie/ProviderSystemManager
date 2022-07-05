@@ -14,4 +14,7 @@ public class AbonentRepository : AbstractRepository<Abonent>, IAbonentRepository
     public override async Task<Abonent> GetByIdAsync(int id) =>
         await DataSet.Include(x => x.AbonentType).FirstOrDefaultAsync(x => x.Id == id);
 
+    public override Abonent GetById(int id) =>
+        DataSet.Include(x => x.AbonentType).FirstOrDefault(x => x.Id == id);
+
 }

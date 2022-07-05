@@ -5,23 +5,23 @@ using System.Collections.ObjectModel;
 
 namespace ProviderSystemManager.WPF.ViewModels.Tables
 {
-    internal class ServicePageViewModel : BindableBase
+    internal class ContractAbonentPageViewModel : BindableBase
     {
-        private readonly IServiceService _serviceService;
+        private readonly IContractService _contractService;
         private readonly IAbonentService _abonentService;
 
-        public ServicePageViewModel(IServiceService serviceService, IAbonentService abonentService)
+        public ContractAbonentPageViewModel(IContractService contractService, IAbonentService abonentService)
         {
-            _serviceService = serviceService;
+            _contractService = contractService;
             _abonentService = abonentService;
 
-            Services = new(_serviceService.Get().Result);
+            Contracts = new(_contractService.Get().Result);
             Abonents = new(_abonentService.Get().Result);
         }
 
-        public ObservableCollection<ServiceGetDto> Services { get; set; }
+        public ObservableCollection<ContractGetDto> Contracts { get; set; }
         public ObservableCollection<AbonentGetDto> Abonents { get; set; }
-        public ServiceGetDto SelectedService { get; set; }
+        public ContractGetDto SelectedContract { get; set; }
         public AbonentGetDto SelectedAbonent { get; set; }
     }
 }

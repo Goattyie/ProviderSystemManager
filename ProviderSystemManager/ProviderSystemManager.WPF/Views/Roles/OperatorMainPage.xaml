@@ -9,6 +9,29 @@
       Title="OperatorMainPage" DataContext="{Binding Source={StaticResource VMLocator}, Path=OperatorMainPageViewModel}">
 
     <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                Background="LightGray">
+            <Button BorderBrush="Transparent" 
+                Background="Transparent" 
+                Content="Контракты" 
+                Width="80"
+                Command="{Binding OnTableSelect}"
+                CommandParameter="contract"/>
+
+            <Button BorderBrush="Transparent" 
+                Width="80"
+                Background="Transparent" 
+                Content="Услуги" 
+                Command="{Binding OnTableSelect}"
+                CommandParameter="service"/>
+        </StackPanel>
+        
         <Frame Grid.Row="1" 
                Content="{Binding CurrentTablePage}" 
                NavigationUIVisibility="Hidden"/>

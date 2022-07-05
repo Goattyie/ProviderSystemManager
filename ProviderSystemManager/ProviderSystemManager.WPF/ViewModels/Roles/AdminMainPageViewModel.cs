@@ -8,17 +8,19 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
 {
     internal class AdminMainPageViewModel : BindableBase
     {
+        private readonly FirmPage _firmPage;
         private readonly UsersPage _usersPage;
         private readonly CommonQueryPage _queryPage;
         private readonly AbonentTypesPage _abonentTypesPage;
 
-        public AdminMainPageViewModel(UsersPage usersPage, CommonQueryPage queryPage, AbonentTypesPage abonentTypesPage, OwnTypePage ownTypePage)
+        public AdminMainPageViewModel(FirmPage firmPage, UsersPage usersPage, CommonQueryPage queryPage, AbonentTypesPage abonentTypesPage, OwnTypePage ownTypePage)
         {
+            _firmPage = firmPage;
             _usersPage = usersPage;
             _queryPage = queryPage;
             _abonentTypesPage = abonentTypesPage;
             _ownTypePage = ownTypePage;
-            CurrentTablePage = _usersPage;
+            CurrentTablePage = _firmPage;
         }
 
         private readonly OwnTypePage _ownTypePage;
@@ -30,6 +32,7 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
         {
             switch (tableName)
             {
+                case "firms": CurrentTablePage = _firmPage; break;
                 case "users": CurrentTablePage = _usersPage; break;
                 case "queries": CurrentTablePage = _queryPage; break;
                 case "abonent types": CurrentTablePage = _abonentTypesPage; break;

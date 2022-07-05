@@ -14,6 +14,7 @@ using ProviderSystemManager.DAL.Repositories.Interfaces;
 using ProviderSystemManager.WPF.ViewModels;
 using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.WPF.ViewModels.Roles;
+using ProviderSystemManager.WPF.ViewModels.Roles.User;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create;
@@ -21,6 +22,7 @@ using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Update;
 using ProviderSystemManager.WPF.Views.Admin;
 using ProviderSystemManager.WPF.Views.Queries;
 using ProviderSystemManager.WPF.Views.Roles;
+using ProviderSystemManager.WPF.Views.Roles.User;
 using ProviderSystemManager.WPF.Views.Tables;
 using ProviderSystemManager.WPF.Views.Tables.CreateUpdate;
 using System.Collections.Generic;
@@ -71,7 +73,9 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<CaseQueryPage>();
             services.AddTransient<UnionQueryPage>();
             services.AddTransient<InQueryPage>();
+            services.AddTransient<UserAboutPage>();
             services.AddTransient<NotInQueryPage>();
+            services.AddTransient<ContractAbonentPage>();
 
             #endregion
 
@@ -118,6 +122,8 @@ namespace ProviderSystemManager.WPF.DI
             services.AddTransient<UnionQueryPageViewModel>();
             services.AddTransient<InQueryPageViewModel>();
             services.AddTransient<NotInQueryPageViewModel>();
+            services.AddTransient<ContractAbonentPageViewModel>();
+            services.AddTransient<UserAboutPageViewModel>();
 
             #endregion
 

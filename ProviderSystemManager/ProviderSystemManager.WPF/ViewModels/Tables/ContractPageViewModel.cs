@@ -10,27 +10,27 @@ namespace ProviderSystemManager.WPF.ViewModels.Tables
     public class ContractPageViewModel : BindableBase
     {
         private readonly IContractService _contractService;
-        private readonly IAbonentService _abonentService;
+        private readonly IFirmService _firmService;
 
-        public ContractPageViewModel(IContractService contractService, IAbonentService abonentService)
+        public ContractPageViewModel(IContractService contractService, IFirmService firmService)
         {
             _contractService = contractService;
-            _abonentService = abonentService;
+            _firmService = firmService;
 
             Contracts = new(_contractService.Get().Result);
-            Abonents = new(_abonentService.Get().Result);
+            Firms = new(_firmService.Get().Result);
         }
 
         public ObservableCollection<ContractGetDto> Contracts { get; set; }
-        public ObservableCollection<AbonentGetDto> Abonents { get; set; }
-        public AbonentGetDto SelectedAbonent 
+        public ObservableCollection<FirmGetDto> Firms { get; set; }
+        public FirmGetDto SelectedFirm 
         { 
-            get => GetValue<AbonentGetDto>(nameof(SelectedAbonent));
+            get => GetValue<FirmGetDto>(nameof(SelectedFirm));
             set 
             {
-                SetValue(value, nameof(SelectedAbonent));
+                SetValue(value, nameof(SelectedFirm));
 
-                var contractsRequest = _contractService.GetByAbonentId(value.Id);
+                var contractsRequest = _contractService.GetByFirmId(value.Id);
 
                 Contracts.Clear();
 

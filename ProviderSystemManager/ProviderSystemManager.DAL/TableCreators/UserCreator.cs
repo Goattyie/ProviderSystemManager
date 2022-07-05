@@ -11,9 +11,9 @@ public class UserCreator
 {
     public static void Init(ProviderDbContext context)
     {
-        var user1 = new User() { Login = "operator1", Password = "1954", Role = UserRole.Operator };
-        var user2 = new User() { Login = "userr", Password = "1955", Role = UserRole.User };
-        var user3 = new User() { Login = "employee_1", Password = "1956", Role = UserRole.Admin };
+        var user1 = new User() { Login = "operator1", Password = "1954", Role = UserRole.Operator, Id = 1 };
+        var user2 = new User() { Login = "userr", Password = "1955", Role = UserRole.Abonent, Id = 2 };
+        var user3 = new User() { Login = "employee_1", Password = "1956", Role = UserRole.Admin, Id = 3 };
 
         context.Users?.Add(user1);
         context.Users?.Add(user2);

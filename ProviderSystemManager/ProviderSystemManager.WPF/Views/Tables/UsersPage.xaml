@@ -25,12 +25,7 @@
                FontWeight="Bold">Пользователи системы</Label>
         
         <DataGrid Grid.Row="1"
-                  BorderBrush="Black"
-                  BorderThickness="2"
-                  AutoGenerateColumns="False"
-                  Background="Transparent"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
+                  Style="{StaticResource UsualDataGrid}"
                   ItemsSource="{Binding Users}"
                   SelectedItem="{Binding SelectedUser}">
             <DataGrid.Columns>

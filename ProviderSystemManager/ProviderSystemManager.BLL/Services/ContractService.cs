@@ -51,11 +51,12 @@ public class ContractService : AbstractService<ContractCreateDto, ContractUpdate
         return OperationResponse.Ok(getDtos.First());
     }
 
-    public OperationResult<IEnumerable<ContractGetDto>> GetByAbonentId(int abonentId)
+    public OperationResult<IEnumerable<ContractGetDto>> GetByFirmId(int firmId)
     {
         var models = Repository
             .GetQuery()
-            .Where(x => x.AbonentId == abonentId);
+            .Include(x => x.Firm)
+            .Where(x => x.FirmId == firmId);
         var getDtos = Mapper.Map<IEnumerable<ContractGetDto>>(models);
 
         return OperationResponse.Ok(getDtos);

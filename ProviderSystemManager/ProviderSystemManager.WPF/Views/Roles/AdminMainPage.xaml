@@ -16,6 +16,11 @@
 
         <StackPanel Orientation="Horizontal"
                     Background="LightGray">
+            <Button BorderBrush="Transparent" 
+                    Background="Transparent" 
+                    Content="Фирмы" 
+                    Command="{Binding OnTableSelect}"
+                    CommandParameter="firms"/>
             <Menu VerticalAlignment="Center"
                   Background="Transparent">
                 <MenuItem Header="Справочники">

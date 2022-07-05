@@ -2,6 +2,7 @@
 using ProviderSystemManager.WPF.ViewModels;
 using ProviderSystemManager.WPF.ViewModels.Queries;
 using ProviderSystemManager.WPF.ViewModels.Roles;
+using ProviderSystemManager.WPF.ViewModels.Roles.User;
 using ProviderSystemManager.WPF.ViewModels.Tables;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate;
 using ProviderSystemManager.WPF.ViewModels.Tables.CreateUpdate.Create;
@@ -52,5 +53,7 @@ namespace ProviderSystemManager.WPF.Utils
         public UnionQueryPageViewModel UnionQueryPageViewModel => IoC.Resolve<UnionQueryPageViewModel>();
         public InQueryPageViewModel InQueryPageViewModel => IoC.Resolve<InQueryPageViewModel>();
         public NotInQueryPageViewModel NotInQueryPageViewModel => IoC.Resolve<NotInQueryPageViewModel>();
+        public UserAboutPageViewModel UserAboutPageViewModel => IoC.Resolve<UserAboutPageViewModel>();
+        public ContractAbonentPageViewModel ContractAbonentPageViewModel => IoC.Resolve<ContractAbonentPageViewModel>();
     }
 }

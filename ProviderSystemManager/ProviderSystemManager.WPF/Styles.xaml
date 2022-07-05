@@ -55,6 +55,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="FontSize" Value="17"/>
     </Style>
 
     <!--BORDERS-->

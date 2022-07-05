@@ -7,11 +7,25 @@ namespace ProviderSystemManager.WPF.ViewModels.Roles
 {
     internal class OperatorMainPageViewModel : BindableBase
     {
-        public OperatorMainPageViewModel(FirmPage firmPage)
+        private readonly ContractAbonentPage _contractPage;
+        private readonly ServicePage _servicePage;
+
+        public OperatorMainPageViewModel(ContractAbonentPage contractPage, ServicePage servicePage)
         {
-            CurrentTablePage = firmPage;
+            _contractPage = contractPage;
+            _servicePage = servicePage;
+            CurrentTablePage = _contractPage;
         }
 
         public Page CurrentTablePage { get; set; }
+
+        public ICommand OnTableSelect => new DelegateCommand<string>((tableName) =>
+        {
+            switch (tableName.ToString())
+            {
+                case "contract": CurrentTablePage = _contractPage; break;
+                case "service": CurrentTablePage = _servicePage; break;
+            }
+        });
     }
 }

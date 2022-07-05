@@ -22,18 +22,13 @@
                     Width="80"
                     Command="{Binding OnTableSelect}"
                     CommandParameter="contract"/>
-            <Button BorderBrush="Transparent" 
-                    Background="Transparent" 
-                    Width="80"
-                    Content="Абоненты" 
-                    Command="{Binding OnTableSelect}"
-                    CommandParameter="abonent"/>
+            
             <Button BorderBrush="Transparent" 
                     Width="80"
                     Background="Transparent" 
-                    Content="Услуги" 
+                    Content="О себе" 
                     Command="{Binding OnTableSelect}"
-                    CommandParameter="service"/>
+                    CommandParameter="about"/>
         </StackPanel>
 
         <Frame Grid.Row="1" 
